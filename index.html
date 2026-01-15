@@ -1,0 +1,3772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SalesBuddy</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="app" id="app" style="height:100vh ;">
+
+  <!-- DASHBOARD VIEW (Default) -->
+  <div id="dashboardView" class="screen active">
+    <!-- HEADER -->
+    <header>
+      <div class="header-row">
+        <div>
+          <div class="app-title">SalesBuddy</div>
+          <div class="app-subtitle">Your AI Sales Assistant</div>
+        </div>
+
+        <div class="header-right">
+          <div class="network-status" id="networkStatus">
+            <button class="network-btn" id="networkBtn">
+              <i class="fas fa-wifi"></i>
+              <span class="network-dot online"></span>
+            </button>
+            <div class="network-dropdown hidden" id="networkDropdown">
+              <div class="network-info">
+                <div class="network-header">
+                  <h4>Network Status</h4>
+                  <span class="network-status-badge online">Online</span>
+                </div>
+                <div class="network-details">
+                  <div class="network-item">
+                    <i class="fas fa-bolt"></i>
+                    <div>
+                      <p class="network-label">Speed</p>
+                      <p class="network-value" id="networkSpeed">Testing...</p>
+                    </div>
+                  </div>
+                  <div class="network-item">
+                    <i class="fas fa-signal"></i>
+                    <div>
+                      <p class="network-label">Strength</p>
+                      <p class="network-value" id="networkStrength">Good</p>
+                    </div>
+                  </div>
+                  <div class="network-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                      <p class="network-label">Latency</p>
+                      <p class="network-value" id="networkLatency">45ms</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="network-test-btn" id="testNetworkBtn">
+                  <i class="fas fa-sync-alt"></i>
+                  Test Speed
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="notification" id="notificationBtn">
+            🔔 <span>6</span>
+            <div class="notification-dropdown hidden" id="notificationDropdown">
+              <div class="notification-item unread">
+                <div class="notification-icon">⏰</div>
+                <div>
+                  <p class="notification-title">Task Due Soon</p>
+                  <p class="notification-desc">Follow up with ABC Corp is due in 1 hour</p>
+                  <p class="notification-time">5 min ago</p>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon">👤</div>
+                <div>
+                  <p class="notification-title">New Lead Assigned</p>
+                  <p class="notification-desc">John Smith from Tech Innovations</p>
+                  <p class="notification-time">30 min ago</p>
+                </div>
+              </div>
+              <div class="notification-item">
+                <div class="notification-icon">💰</div>
+                <div>
+                  <p class="notification-title">Deal Stage Updated</p>
+                  <p class="notification-desc">Enterprise Software License moved to Negotiation</p>
+                  <p class="notification-time">1 hour ago</p>
+                </div>
+              </div>
+              <button class="view-all-btn" id="viewAllNotificationsBtn">View All Notifications</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-box" id="searchBox">
+        🔍 <input type="text" placeholder="Search customers, leads, tasks..." class="search-input" id="searchInput">
+      </div>
+    </header>
+
+    <!-- DASHBOARD MAIN -->
+    <main>
+      <!-- AI Insight -->
+      <div class="ai-insight">
+        <div class="ai-left">
+          <div class="ai-icon">✨</div>
+          <div>
+            <h4>AI Insight</h4>
+            <p>3 leads need follow-up today. 2 opportunities at risk.</p>
+          </div>
+        </div>
+        <span class="view-all" id="viewInsightsBtn">View All</span>
+      </div>
+
+      <!-- CARDS -->
+      <div class="cards">
+        <!-- SALES CARD -->
+        <div class="card sales-card" id="salesTargetCard">
+          <div class="card-icon blue">🎯</div>
+          <div class="card-title">Sales Target</div>
+          <div class="card-sub">Q1 2024</div>
+          <div class="card-value">₹45L / ₹50L</div>
+          <div class="card-success">90%</div>
+        </div>
+
+        <div class="card" id="tasksCard">
+          <div class="card-icon blue">✓</div>
+          <div class="card-title">Tasks</div>
+          <div class="card-sub">Due Today</div>
+          <div class="card-value">8</div>
+        </div>
+
+        <div class="card" id="leadsCard">
+          <div class="card-icon green">👤</div>
+          <div class="card-title">Leads</div>
+          <div class="card-sub">New This Month</div>
+          <div class="card-value">24</div>
+        </div>
+
+        <div class="card" id="opportunitiesCard">
+          <div class="card-icon yellow">📈</div>
+          <div class="card-title">Opportunities</div>
+          <div class="card-sub">New This Month</div>
+          <div class="card-value">12</div>
+        </div>
+
+        <div class="card" id="proposalsCard">
+          <div class="card-icon teal">📄</div>
+          <div class="card-title">Proposals</div>
+          <div class="card-sub">New This Month</div>
+          <div class="card-value">7</div>
+        </div>
+
+        <div class="card" id="customersCard">
+          <div class="card-icon green">👥</div>
+          <div class="card-title">Customers</div>
+          <div class="card-sub">Active Accounts</div>
+          <div class="card-value">156</div>
+        </div>
+
+        <div class="card" id="complaintsCard">
+          <div class="card-icon orange">⚠</div>
+          <div class="card-title">Customer Complaints</div>
+          <div class="card-sub">Pending Resolution</div>
+          <div class="card-value">3</div>
+        </div>
+
+        <!-- Customer Visit Card -->
+        <div class="card" id="visitsCard">
+          <div class="card-icon purple">📍</div>
+          <div class="card-title">Customer Visits</div>
+          <div class="card-sub">Ongoing visit</div>
+          <div class="card-value">1</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- SALES TARGET SCREEN -->
+  <!-- Updated SALES TARGET SCREEN -->
+  <section class="screen hidden" id="salesScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromSales">←</span>
+      <div>
+        <h2>Sales Target</h2>
+        <p id="salesTargetPeriod">Q1 2024 Performance</p>
+      </div>
+      <div class="time-range-selector">
+        <select id="timeRangeSelect">
+          <option value="q1">Q1 2024</option>
+          <option value="q2">Q2 2024</option>
+          <option value="q3">Q3 2024</option>
+          <option value="q4">Q4 2024</option>
+          <option value="monthly">Monthly View</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <!-- CURRENT PROGRESS -->
+      <div class="big-card">
+        <div class="row">
+          <div class="icon-box blue">📈</div>
+          <div>
+            <h4>Current Progress</h4>
+            <p id="currentPeriodText">January – March 2024</p>
+          </div>
+        </div>
+
+        <div class="amount">
+          <span id="salesCurrentAmount">₹45,00,000</span> <span>/ <span id="salesTargetAmount">₹50,00,000</span></span>
+        </div>
+
+        <div class="progress-bar">
+          <span id="salesProgressBar" style="width:90%"></span>
+        </div>
+
+        <div class="progress-text" id="salesProgressText">
+          ✅ 90% Complete – You're ahead!
+        </div>
+
+        <div class="summary">
+          <div class="summary-card success">
+            <p>Achieved</p>
+            <h3 id="achievedAmount">₹45L</h3>
+          </div>
+          <div class="summary-card info">
+            <p>Remaining</p>
+            <h3 id="remainingAmount">₹5L</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- MONTHLY BREAKDOWN - ENHANCED -->
+      <div class="big-card">
+        <div class="monthly-header">
+          <h4>Monthly Breakdown</h4>
+          <div class="color-legend">
+            <span class="legend-item achieved"><i class="fas fa-circle"></i> Achieved</span>
+            <span class="legend-item near"><i class="fas fa-circle"></i> Near Target</span>
+            <span class="legend-item below"><i class="fas fa-circle"></i> Below Target</span>
+          </div>
+        </div>
+
+        <div class="monthly-list" id="monthlyBreakdown">
+          <!-- Will be populated by JavaScript -->
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- LEADS LIST SCREEN -->
+  <section class="screen hidden" id="leadsScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromLeads">←</span>
+      <div>
+        <h2>Leads</h2>
+        <p>24 new this month</p>
+      </div>
+      <div class="header-actions">
+  <button class="action-btn delete" id="deleteLeadBtn">
+    <i class="fas fa-trash"></i> 
+  </button>
+</div>
+    </header>
+
+    <div class="filter-section">
+      <div class="search-box leads-search">
+        🔍 <input type="text" placeholder="Search leads..." class="search-input" id="leadsSearch">
+      </div>
+      <button class="filter-btn" id="leadsFilterBtn">Filter</button>
+    </div>
+
+    <div class="filter-panel hidden" id="leadsFilterPanel">
+      <div class="filter-group">
+        <h5>Status</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="status" data-value="all">All</button>
+          <button class="filter-option" data-filter="status" data-value="hot">Hot</button>
+          <button class="filter-option" data-filter="status" data-value="warm">Warm</button>
+          <button class="filter-option" data-filter="status" data-value="cold">Cold</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <h5>Region</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="region" data-value="all">All</button>
+          <button class="filter-option" data-filter="region" data-value="north">North</button>
+          <button class="filter-option" data-filter="region" data-value="south">South</button>
+          <button class="filter-option" data-filter="region" data-value="east">East</button>
+          <button class="filter-option" data-filter="region" data-value="west">West</button>
+        </div>
+      </div>
+      <button class="clear-filters" id="clearLeadsFilters">Clear All</button>
+    </div>
+
+    <main class="leads-list">
+      <div class="lead-card" data-status="hot" data-region="north" data-lead-id="1">
+        <div class="lead-avatar">JS</div>
+        <div class="lead-info">
+          <div class="lead-header">
+            <h4>John Smith</h4>
+            <span class="lead-badge hot">Hot</span>
+          </div>
+          <p class="lead-company">Tech Innovations Inc</p>
+          <p class="lead-detail">North Region •</p>
+          <div class="lead-actions">
+            <button class="icon-btn"><i class="fas fa-phone"></i></button>
+            <button class="icon-btn"><i class="fas fa-envelope"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lead-card" data-status="warm" data-region="west" data-lead-id="2">
+        <div class="lead-avatar">SJ</div>
+        <div class="lead-info">
+          <div class="lead-header">
+            <h4>Sarah Johnson</h4>
+            <span class="lead-badge warm">Warm</span>
+          </div>
+          <p class="lead-company">Digital Solutions</p>
+          <p class="lead-detail">West Region •</p>
+          <div class="lead-actions">
+            <button class="icon-btn"><i class="fas fa-phone"></i></button>
+            <button class="icon-btn"><i class="fas fa-envelope"></i></button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- LEAD DETAIL SCREEN - UPDATED WITH NEW FEATURES -->
+  <section class="screen hidden" id="leadDetailScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromLeadDetail">←</span>
+      <div>
+        <h2>Lead Details</h2>
+        <p id="leadDetailCompany">Tech Innovations Inc</p>
+      </div>
+      <button class="edit-btn" id="editLeadBtn">
+        <i class="fas fa-edit"></i>
+      </button>
+    </header>
+
+    <main class="lead-detail-content">
+      <!-- Lead Header Card - UPDATED -->
+      <div class="detail-header-card">
+        <div class="lead-detail-avatar" id="leadDetailAvatar">JS</div>
+        <div class="lead-detail-info">
+          <div class="lead-detail-header">
+            <h3 id="leadDetailName">John Smith</h3>
+            <span class="lead-badge hot" id="leadDetailStatus">Hot</span>
+          </div>
+          <div class="lead-contact-info">
+            <div class="contact-item">
+              <i class="fas fa-user"></i>
+              <span>Lead Name: <strong id="leadDetailLeadName">John Smith</strong></span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-building"></i>
+              <span>Client: <strong id="leadDetailClient">Tech Innovations Inc</strong></span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>Contact: <strong id="leadDetailContactNumber">+91 98765 43210</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="lead-detail-actions">
+          <button class="action-btn" id="convertToOpportunityBtn">
+    <i class="fas fa-exchange-alt"></i> Convert to Opportunity
+  </button>
+    <button class="action-btn" id="createProposalBtn">
+    <i class="fas fa-exchange-alt"></i> Create proposal
+  </button>
+  <button class="action-btn" id="copyLeadBtn">
+    <i class="fas fa-copy"></i> Copy Lead
+  </button>
+  
+  <button class="action-btn" id="forwardLeadBtn">
+    <i class="fas fa-share"></i> Forward Lead
+  </button>
+  
+</div>
+      </div>
+
+      <!-- Details Section - COMBINED -->
+      <div class="detail-section">
+        <h4>Details</h4>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <i class="fas fa-sitemap"></i>
+            <div>
+              <p class="detail-label">MM Division</p>
+              <p class="detail-value" id="leadDetailDivision">Enterprise Division</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <p class="detail-label">Region</p>
+              <p class="detail-value" id="leadDetailRegion">North India</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-box"></i>
+            <div>
+              <p class="detail-label">MM Product</p>
+              <p class="detail-value" id="leadDetailProduct">Enterprise Suite</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-tag"></i>
+            <div>
+              <p class="detail-label">Brand</p>
+              <p class="detail-value" id="leadDetailBrand">TechBrand</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-industry"></i>
+            <div>
+              <p class="detail-label">Industry</p>
+              <p class="detail-value" id="leadDetailIndustry">Technology</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-user"></i>
+            <div>
+              <p class="detail-label">Assigned To</p>
+              <p class="detail-value" id="leadDetailAssignedTo">Rahul Kumar</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-briefcase"></i>
+            <div>
+              <p class="detail-label">Agency</p>
+              <p class="detail-value" id="leadDetailAgency">Digital Marketing Agency</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <p class="detail-label">Client Contact</p>
+              <p class="detail-value" id="leadDetailClientContact">john@techinnovations.com</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-boxes"></i>
+            <div>
+              <p class="detail-label">Client Product</p>
+              <p class="detail-value" id="leadDetailClientProduct">CRM Software</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-calendar-alt"></i>
+            <div>
+              <p class="detail-label">Rolling Month</p>
+              <p class="detail-value" id="leadDetailRollingMonth">March 2024</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-globe"></i>
+            <div>
+              <p class="detail-label">Source</p>
+              <p class="detail-value" id="leadDetailSource">Website</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-sitemap"></i>
+            <div>
+              <p class="detail-label">Sub-Division</p>
+              <p class="detail-value" id="leadDetailSubDivision">Enterprise Sales</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Associated Contacts/Organization Section - NEW -->
+      <div class="detail-section">
+        <div class="section-header">
+          <h4>
+            <i class="fas fa-users"></i>
+            Associated Contacts & Organization
+          </h4>
+         
+        </div>
+        
+        <div class="associated-contacts" id="associatedContacts">
+          <!-- Contacts will be loaded dynamically -->
+          <div class="contact-item">
+           
+            <div class="contact-info">
+              <div class="contact-header">
+                <h5>John Smith</h5>
+                
+              </div>
+              <div class="contact-details">
+                <div class="contact-detail">
+                  <i class="fas fa-envelope"></i>
+                  <span>john@techinnovations.com</span>
+                </div>
+                <div class="contact-detail">
+                  <i class="fas fa-phone"></i>
+                  <span>+91 98765 43210</span>
+                </div>
+                <div class="contact-detail">
+                  <i class="fas fa-briefcase"></i>
+                  <span>CEO</span>
+                </div>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <button class="icon-btn edit-contact-btn" data-contact-id="contact_1">
+                <i class="fas fa-edit"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-avatar">SJ</div>
+            <div class="contact-info">
+              <div class="contact-header">
+                <h5>Sarah Johnson</h5>
+                
+              </div>
+              <div class="contact-details">
+                <div class="contact-detail">
+                  <i class="fas fa-envelope"></i>
+                  <span>sarah@techinnovations.com</span>
+                </div>
+                <div class="contact-detail">
+                  <i class="fas fa-phone"></i>
+                  <span>+91 98765 43211</span>
+                </div>
+                <div class="contact-detail">
+                  <i class="fas fa-briefcase"></i>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <button class="icon-btn edit-contact-btn" data-contact-id="contact_2">
+                <i class="fas fa-edit"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Organization Structure -->
+        
+      </div>
+
+      <!-- Lead Related Task -->
+      <div class="detail-section">
+        <div class="section-header">
+          <h4>Lead Related Tasks</h4>
+          <button class="add-task-btn" id="addTaskForLeadBtn">
+            <i class="fas fa-plus"></i> Add Task
+          </button>
+        </div>
+        <div class="tasks-list">
+          <div class="task-item" data-task-id="1">
+            <label class="task-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <div class="task-info">
+              <div class="task-header">
+                <h4>Follow up call</h4>
+                <span class="task-badge high">High</span>
+              </div>
+              <p class="task-time">⏰ Tomorrow, 10:00 AM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Documents -->
+      <div class="detail-section">
+        <h4>Documents</h4>
+        <div class="upload-section">
+          <div class="upload-area" id="leadUploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Drag & drop files here or</p>
+            <button class="upload-btn small" id="leadUploadBtn">
+              <i class="fas fa-upload"></i> Upload
+            </button>
+            <input type="file" id="leadFileInput" multiple style="display: none;">
+          </div>
+          <div class="uploaded-files" id="leadUploadedFiles">
+            <!-- Files will appear here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="detail-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="chat">Chat</button>
+          <button class="tab-btn" data-tab="activity">Activity</button>
+          <button class="tab-btn" data-tab="documents">Documents</button>
+        </div>
+        
+        <div class="tab-content active" id="chatTab">
+          <div class="chat-history">
+            <div class="chat-message ai">
+              <div class="message-avatar">RK</div>
+              <div class="message-content">
+                <p>Just had a call with John. He's interested in the enterprise plan.</p>
+                <span class="message-time">2 hours ago</span>
+              </div>
+            </div>
+            <div class="chat-message ai">
+              <div class="message-avatar">SS</div>
+              <div class="message-content">
+                <p>Great! Did he mention the budget?</p>
+                <span class="message-time">1 hour ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-container">
+            <input type="text" placeholder="Type a message..." class="chat-input-detail">
+            <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="activityTab">
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-plus"></i></div>
+              <div class="activity-content">
+                <p>Lead created</p>
+                <span class="activity-time">Mar 1, 2024</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-sync-alt"></i></div>
+              <div class="activity-content">
+                <p>Updated status to Hot</p>
+                <span class="activity-time">Mar 5, 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="documentsTab">
+          <div class="documents-list">
+            <div class="document-item">
+              <i class="fas fa-file-pdf"></i>
+              <div>
+                <p>Proposal_v1.pdf</p>
+                <span>2.4 MB • Mar 12, 2024</span>
+              </div>
+              <button class="view-doc-btn">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- TASKS LIST SCREEN -->
+  <section class="screen hidden" id="tasksScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromTasks">←</span>
+      <div>
+        <h2>Tasks</h2>
+        <p>8 due today</p>
+      </div>
+    </header>
+
+    <div class="filter-section">
+      <div class="search-box">
+        🔍 <input type="text" placeholder="Search tasks..." class="search-input" id="tasksSearch">
+      </div>
+      <button class="filter-btn" id="tasksFilterBtn">Filter</button>
+    </div>
+
+    <div class="filter-panel hidden" id="tasksFilterPanel">
+      <div class="filter-group">
+        <h5>Priority</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="priority" data-value="all">All</button>
+          <button class="filter-option" data-filter="priority" data-value="high">High</button>
+          <button class="filter-option" data-filter="priority" data-value="medium">Medium</button>
+          <button class="filter-option" data-filter="priority" data-value="low">Low</button>
+        </div>
+      </div>
+    </div>
+
+    <main class="tasks-list">
+      <div class="task-item" data-priority="high" data-date="2024-03-18" data-task-id="1">
+        <label class="task-checkbox">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+        <div class="task-info">
+          <div class="task-header">
+            <h4>Follow up with ABC Corp</h4>
+            <span class="task-badge high">High</span>
+          </div>
+          <p class="task-time">⏰ 10:00 AM</p>
+        </div>
+      </div>
+
+      <div class="task-item" data-priority="medium" data-date="2024-03-18" data-task-id="2">
+        <label class="task-checkbox">
+          <input type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+        <div class="task-info">
+          <div class="task-header">
+            <h4>Prepare proposal for XYZ Ltd</h4>
+            <span class="task-badge medium">Medium</span>
+          </div>
+          <p class="task-time">⏰ 11:30 AM</p>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- TASK FORM SCREEN -->
+  <section class="screen hidden" id="taskFormScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromTaskForm">←</span>
+      <div>
+        <h2>Create New Task</h2>
+        <p>Add a new task to your schedule</p>
+      </div>
+    </header>
+
+    <main class="form-container">
+      <form id="taskForm">
+        <div class="form-columns">
+          <!-- LEFT COLUMN -->
+          <div class="form-column">
+            <div class="form-group">
+              <label>Task Title <span class="req">*</span></label>
+              <input type="text" id="sbTaskTitle" placeholder="Enter task title" required>
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="sbTaskDescription" placeholder="Describe the task..." rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Associate With</label>
+              <select id="sbAssociateWith">
+                <option value="">Select association</option>
+                <option value="lead">Lead</option>
+                <option value="opportunity">Opportunity</option>
+                <option value="customer">Customer</option>
+                <option value="proposal">Proposal</option>
+                <option value="visit">Visit</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Opportunity</label>
+              <select id="sbTaskOpportunity">
+                <option value="">Select opportunity</option>
+                <option value="opp-1">Enterprise Software License</option>
+                <option value="opp-2">Cloud Migration Project</option>
+                <option value="opp-3">Digital Marketing Package</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Task Type</label>
+              <select id="sbTaskType">
+                <option value="follow-up">Follow-up</option>
+                <option value="call">Call</option>
+                <option value="meeting">Meeting</option>
+                <option value="proposal">Proposal Preparation</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Assign To</label>
+              <select id="sbTaskAssignTo">
+                <option value="">Select person</option>
+                <option value="Rahul Kumar">Rahul Kumar</option>
+                <option value="Priya Sharma">Priya Sharma</option>
+                <option value="Self">Self</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="form-column">
+            <div class="form-group">
+              <label>Start Date</label>
+              <input type="date" id="sbTaskStartDate">
+            </div>
+
+            <div class="form-group">
+              <label>Start Time</label>
+              <input type="time" id="sbTaskStartTime">
+            </div>
+
+            <div class="form-group">
+              <label>End Date</label>
+              <input type="date" id="sbTaskEndDate">
+            </div>
+
+            <div class="form-group">
+              <label>End Time</label>
+              <input type="time" id="sbTaskEndTime">
+            </div>
+
+            <div class="form-group">
+              <label>Priority</label>
+              <select id="sbTaskPriority">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Status</label>
+              <select id="sbTaskStatus">
+                <option value="pending" selected>Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Person to Meet</label>
+              <input type="text" id="sbTaskPersonToMeet" placeholder="Enter person name">
+            </div>
+
+            <div class="form-group">
+              <label>Set Reminder</label>
+              <select id="sbTaskReminder">
+                <option value="none">None</option>
+                <option value="15">15 minutes before</option>
+                <option value="30">30 minutes before</option>
+                <option value="60">1 hour before</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEND NOTIFICATION -->
+        <div class="form-section">
+          <h3 class="section-title">Send Notification</h3>
+          <div class="form-group">
+            <label>Send To</label>
+            <select id="sbTaskNotificationPerson">
+              <option value="rahul">Rahul Kumar</option>
+              <option value="priya">Priya Sharma</option>
+              <option value="amit">Amit Patel</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Notification Type</label>
+            <select id="sbTaskNotificationType">
+              <option value="email">Email</option>
+              <option value="in-app">In-App Notification</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- COMMENTS -->
+        <div class="form-section">
+          <h3 class="section-title">Comments</h3>
+          <div class="form-group">
+            <textarea id="sbTaskComments" placeholder="Add any additional comments..." rows="4"></textarea>
+          </div>
+        </div>
+
+        <!-- FORM ACTIONS -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelTaskBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitTaskBtn">Create Task</button>
+        </div>
+      </form>
+    </main>
+  </section>
+
+  <!-- LEAD FORM SCREEN -->
+  <section class="screen hidden" id="leadFormScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromLeadForm">←</span>
+      <div>
+        <h2>Create New Lead</h2>
+        <p>Add a new sales lead</p>
+      </div>
+    </header>
+
+    <main class="form-container">
+      <form id="salesbuddyLeadForm" class="lead-form">
+        <div class="form-columns">
+          <!-- Column 1 -->
+          <div class="form-group">
+            <label>Lead Name <span class="req">*</span></label>
+            <input type="text" id="sbLeadName" placeholder="Enter lead name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="sbLeadDescription" placeholder="Enter description" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Agency <span class="add-new">(Add New)</span></label>
+            <div class="input-with-btn">
+              <input type="text" id="sbAgency" placeholder="Enter agency">
+              <button type="button" class="add-new-btn" id="addAgencyBtn">+</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Client <span class="req">*</span></label>
+            <input type="text" id="sbClient" placeholder="Enter client name" required>
+          </div>
+
+          <div class="form-group">
+            <label>MM Products</label>
+            <input type="text" id="sbMmProducts" placeholder="Enter MM products">
+          </div>
+
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" id="sbLeadTag" placeholder="Enter tag">
+          </div>
+
+          <!-- Column 2 -->
+          <div class="form-group">
+            <label>Assign To</label>
+            <select id="sbAssignTo">
+              <option value="">Select person</option>
+              <option value="Rahul Kumar">Rahul Kumar</option>
+              <option value="Priya Sharma">Priya Sharma</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Primary Contact</label>
+            <input type="text" id="sbPrimaryContact" placeholder="Enter primary contact">
+          </div>
+
+          <div class="form-group">
+            <label>Client Contact</label>
+            <input type="text" id="sbClientContact" placeholder="Enter client contact">
+          </div>
+
+          <div class="form-group">
+            <label>Client Product</label>
+            <input type="text" id="sbClientProduct" placeholder="Enter client product">
+          </div>
+
+          <div class="form-group">
+            <label>Brand</label>
+            <input type="text" id="sbBrand" placeholder="Enter brand">
+          </div>
+
+          <div class="form-group">
+            <label>Industry</label>
+            <input type="text" id="sbIndustry" placeholder="Enter industry">
+          </div>
+
+          <div class="form-group">
+            <label>Rolling Month</label>
+            <input type="text" id="sbRollingMonth" placeholder="Enter month">
+          </div>
+
+          <div class="form-group">
+            <label>Source</label>
+            <select id="sbSource">
+              <option value="">Select source</option>
+              <option value="website">Website</option>
+              <option value="referral">Referral</option>
+              <option value="social">Social Media</option>
+              <option value="email">Email Campaign</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>MM Division</label>
+            <input type="text" id="sbMmDivision" placeholder="Enter division">
+          </div>
+
+          <div class="form-group">
+            <label>Sub Division</label>
+            <input type="text" id="sbSubDivision" placeholder="Enter sub-division">
+          </div>
+
+          <div class="form-group">
+            <label>Region</label>
+            <select id="sbRegion">
+              <option value="">Select region</option>
+              <option value="north">North</option>
+              <option value="south">South</option>
+              <option value="east">East</option>
+              <option value="west">West</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <select id="sbLeadStatus">
+              <option value="new">New</option>
+              <option value="hot">Hot</option>
+              <option value="warm">Warm</option>
+              <option value="cold">Cold</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Send Notification</label>
+            <select id="sbSendNotification">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Upload Documents Section -->
+        <div class="form-section">
+          <h3 class="section-title">Upload Documents</h3>
+          <div class="upload-area form-upload" id="leadFormUploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Drag & drop files here or</p>
+            <button type="button" class="upload-btn small" id="leadFormUploadBtn">
+              <i class="fas fa-upload"></i> Upload
+            </button>
+            <input type="file" id="leadFormFileInput" multiple style="display: none;">
+          </div>
+          <div class="uploaded-files-list" id="leadFormUploadedFiles">
+            <!-- Uploaded files will appear here -->
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelLeadBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Lead</button>
+        </div>
+      </form>
+    </main>
+  </section>
+
+  <!-- OPPORTUNITY DETAIL SCREEN -->
+  <section class="screen hidden" id="opportunityDetailScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromOpportunityDetail">←</span>
+      <div>
+        <h2>Opportunity Details</h2>
+        <p id="opportunityDetailCompany">ABC Corporation</p>
+      </div>
+      <button class="edit-btn" id="editOpportunityBtn">
+        <i class="fas fa-edit"></i>
+      </button>
+    </header>
+
+    <main class="lead-detail-content">
+      <!-- Opportunity Header Card -->
+      <div class="detail-header-card success-card">
+        <div class="opportunity-detail-header">
+          <h3 id="opportunityDetailTitle">Enterprise Software License</h3>
+          <span class="opportunity-badge success" id="opportunityDetailStage">Negotiation</span>
+        </div>
+        <div class="opportunity-detail-value">
+          <span class="amount" id="opportunityDetailValue">₹12.5L</span>
+          <span class="probability" id="opportunityDetailProbability">80% probability</span>
+        </div>
+        <div class="progress-bar">
+          <span class="progress-fill" id="opportunityProgressBar" style="width: 80%"></span>
+        </div>
+        <div class="expected-revenue" id="opportunityDetailExpectedRevenue">
+          Expected Revenue: <strong>₹12.5L</strong>
+        </div>
+        <p class="opportunity-description" id="opportunityDetailDescription">
+          Full enterprise license for 500 users including premium support and training.
+        </p>
+      </div>
+       <div class="lead-detail-actions">
+  <button class="action-btn" id="forwardLeadBtn">
+    <i class="fas fa-share"></i> Convert to Proposal
+  </button>
+  <button class="action-btn" id="convertToOpportunityBtn">
+    <i class="fas fa-exchange-alt"></i> Forward Opportunity  
+  </button>
+</div>
+
+      <!-- Details Section -->
+      <div class="detail-section">
+        <h4>Details</h4>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <i class="fas fa-sitemap"></i>
+            <div>
+              <p class="detail-label">Division</p>
+              <p class="detail-value" id="opportunityDetailDivision">Enterprise Division</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <p class="detail-label">Region</p>
+              <p class="detail-value" id="opportunityDetailRegion">North India</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-box"></i>
+            <div>
+              <p class="detail-label">MM Product</p>
+              <p class="detail-value" id="opportunityDetailProduct">Enterprise Suite</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-tag"></i>
+            <div>
+              <p class="detail-label">Brand</p>
+              <p class="detail-value" id="opportunityDetailBrand">TechBrand</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-industry"></i>
+            <div>
+              <p class="detail-label">Industry</p>
+              <p class="detail-value" id="opportunityDetailIndustry">Technology</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-user"></i>
+            <div>
+              <p class="detail-label">Assigned To</p>
+              <p class="detail-value" id="opportunityDetailOwner">Rahul Kumar</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-briefcase"></i>
+            <div>
+              <p class="detail-label">Agency</p>
+              <p class="detail-value" id="opportunityDetailAgency">Digital Solutions Agency</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <p class="detail-label">Client Contact</p>
+              <p class="detail-value" id="opportunityDetailClientContact">james@abccorp.com</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-boxes"></i>
+            <div>
+              <p class="detail-label">Client Product</p>
+              <p class="detail-value" id="opportunityDetailClientProduct">Business Software</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-calendar-alt"></i>
+            <div>
+              <p class="detail-label">Rolling Month</p>
+              <p class="detail-value" id="opportunityDetailRollingMonth">April 2024</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-globe"></i>
+            <div>
+              <p class="detail-label">Source</p>
+              <p class="detail-value" id="opportunityDetailSource">Referral</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-sitemap"></i>
+            <div>
+              <p class="detail-label">Sub-Division</p>
+              <p class="detail-value" id="opportunityDetailSubDivision">Enterprise Sales</p>
+            </div>
+          </div>
+        </div>
+      </div>
+         <div class="detail-section">
+        <div class="section-header">
+          <h4>
+            <i class="fas fa-users"></i>
+            Associated Contacts & Organization
+          </h4>
+         
+        </div>
+        
+        <div class="associated-contacts" id="associatedContacts">
+          <!-- Contacts will be loaded dynamically -->
+          <div class="contact-item">
+           
+            <div class="contact-info">
+              <div class="contact-header">
+                <h5>John Smith</h5>
+                
+              </div>
+              <div class="contact-details">
+                <div class="contact-detail">
+                  <i class="fas fa-envelope"></i>
+                  <span>john@techinnovations.com</span>
+                </div>
+                <div class="contact-detail">
+                  <i class="fas fa-phone"></i>
+                  <span>+91 98765 43210</span>
+                </div>
+                <div class="contact-detail">
+                  <i class="fas fa-briefcase"></i>
+                  <span>CEO</span>
+                </div>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <button class="icon-btn edit-contact-btn" data-contact-id="contact_1">
+                <i class="fas fa-edit"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-avatar">SJ</div>
+            <div class="contact-info">
+              <div class="contact-header">
+                <h5>Sarah Johnson</h5>
+                
+              </div>
+              <div class="contact-details">
+                <div class="contact-detail">
+                  <i class="fas fa-envelope"></i>
+                  <span>sarah@techinnovations.com</span>
+                </div>
+                <div class="contact-detail">
+                  <i class="fas fa-phone"></i>
+                  <span>+91 98765 43211</span>
+                </div>
+                <div class="contact-detail">
+                  <i class="fas fa-briefcase"></i>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <button class="icon-btn edit-contact-btn" data-contact-id="contact_2">
+                <i class="fas fa-edit"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Organization Structure -->
+        
+      </div>
+      <!-- Stage Pipeline -->
+      <div class="detail-section">
+        <h4>Sales Progress</h4>
+        <div class="stage-pipeline">
+          <div class="stage completed">
+            <div class="stage-name">Discovery</div>
+            <div class="stage-line"></div>
+          </div>
+          <div class="stage completed">
+            <div class="stage-name">Proposal</div>
+            <div class="stage-line"></div>
+          </div>
+          <div class="stage active">
+            <div class="stage-name">Negotiation</div>
+            <div class="stage-line"></div>
+          </div>
+          <div class="stage">
+            <div class="stage-name">Closed Won</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Section -->
+      <div class="detail-section">
+        <div class="section-header">
+          <h4>Tasks</h4>
+          <button class="add-task-btn" id="addTaskForOpportunityBtn">
+            <i class="fas fa-plus"></i> Add Task
+          </button>
+        </div>
+        <div class="tasks-list">
+          <div class="task-item" data-task-id="1">
+            <label class="task-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <div class="task-info">
+              <div class="task-header">
+                <h4>Send final proposal</h4>
+                <span class="task-badge high">High</span>
+              </div>
+              <p class="task-time">⏰ Due: Tomorrow, 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Documents -->
+      <div class="detail-section">
+        <h4>Documents</h4>
+        <div class="upload-section">
+          <div class="upload-area" id="opportunityUploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Drag & drop files here or</p>
+            <button class="upload-btn small" id="opportunityUploadBtn">
+              <i class="fas fa-upload"></i> Upload
+            </button>
+            <input type="file" id="opportunityFileInput" multiple style="display: none;">
+          </div>
+          <div class="uploaded-files" id="opportunityUploadedFiles">
+            <!-- Files will appear here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="detail-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="chat">Chat</button>
+          <button class="tab-btn" data-tab="activity">Activity</button>
+          <button class="tab-btn" data-tab="documents">Documents</button>
+        </div>
+        
+        <div class="tab-content active" id="chatTabOpportunity">
+          <div class="chat-history">
+            <div class="chat-message ai">
+              <div class="message-avatar">RK</div>
+              <div class="message-content">
+                <p>Client requested 10% discount on the annual plan.</p>
+                <span class="message-time">1 day ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-container">
+            <input type="text" placeholder="Type a message..." class="chat-input-detail">
+            <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="activityTabOpportunity">
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-plus"></i></div>
+              <div class="activity-content">
+                <p>Created opportunity</p>
+                <span class="activity-time">Feb 1, 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="documentsTabOpportunity">
+          <div class="documents-list">
+            <div class="document-item">
+              <i class="fas fa-file-pdf"></i>
+              <div>
+                <p>Enterprise_Proposal.pdf</p>
+                <span>3.2 MB • Feb 20, 2024</span>
+              </div>
+              <button class="view-doc-btn">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- OPPORTUNITY FORM SCREEN -->
+  <section class="screen hidden" id="opportunityFormScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromOpportunityForm">←</span>
+      <div>
+        <h2>Create New Opportunity</h2>
+        <p>Add a new sales opportunity</p>
+      </div>
+    </header>
+
+    <main class="form-container">
+      <form id="salesbuddyOpportunityForm" class="opportunity-form">
+        <div class="form-columns">
+          <!-- Column 1 -->
+          <div class="form-group">
+            <label>Opportunity Name <span class="req">*</span></label>
+            <input type="text" id="sbOpportunityName" placeholder="Enter opportunity name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="sbOpportunityDescription" placeholder="Describe the opportunity" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Agency <span class="add-new">(Add New)</span></label>
+            <div class="input-with-btn">
+              <input type="text" id="sbOpportunityAgency" placeholder="Enter agency">
+              <button type="button" class="add-new-btn" id="addOpportunityAgencyBtn">+</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Client <span class="add-new">(Add New)</span></label>
+            <div class="input-with-btn">
+              <input type="text" id="sbOpportunityClient" placeholder="Enter client name">
+              <button type="button" class="add-new-btn" id="addOpportunityClientBtn">+</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Amount <span class="req">*</span></label>
+            <div class="currency-input">
+              <span class="currency-symbol">₹</span>
+              <input type="number" id="sbExpectedValue" placeholder="0.0" step="0.1" required>
+            </div>
+            <span class="form-hint">Value in lakhs (e.g., 12.5 for ₹12.5L)</span>
+          </div>
+
+          <div class="form-group">
+            <label>Sales Stage</label>
+            <select id="sbOpportunityStage">
+              <option value="discovery">Discovery</option>
+              <option value="proposal">Proposal</option>
+              <option value="negotiation">Negotiation</option>
+              <option value="closed-won">Closed Won</option>
+              <option value="closed-lost">Closed Lost</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Probability (%)</label>
+            <input type="range" id="sbProbability" min="0" max="100" value="50">
+            <span class="form-hint" id="sbProbabilityValue">50%</span>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="form-group">
+            <label>MM Product</label>
+            <input type="text" id="sbOpportunityProducts" placeholder="Enter MM product">
+          </div>
+
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" id="sbOpportunityTag" placeholder="Enter tag">
+          </div>
+
+          <div class="form-group">
+            <label>Assign To</label>
+            <select id="sbOpportunityAssignTo">
+              <option value="">Select person</option>
+              <option value="Rahul Kumar">Rahul Kumar</option>
+              <option value="Priya Sharma">Priya Sharma</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Primary Contact</label>
+            <input type="text" id="sbOpportunityPrimaryContact" placeholder="Enter primary contact">
+          </div>
+
+          <div class="form-group">
+            <label>Client Contact</label>
+            <input type="text" id="sbOpportunityClientContact" placeholder="Enter client contact">
+          </div>
+
+          <div class="form-group">
+            <label>Client Product</label>
+            <input type="text" id="sbOpportunityClientProduct" placeholder="Enter client product">
+          </div>
+
+          <div class="form-group">
+            <label>Brand</label>
+            <input type="text" id="sbOpportunityBrand" placeholder="Enter brand">
+          </div>
+
+          <div class="form-group">
+            <label>Industry</label>
+            <input type="text" id="sbOpportunityIndustry" placeholder="Enter industry">
+          </div>
+
+          <div class="form-group">
+            <label>Rolling Month</label>
+            <input type="text" id="sbOpportunityRollingMonth" placeholder="Enter month">
+          </div>
+
+          <div class="form-group">
+            <label>Source</label>
+            <select id="sbOpportunitySource">
+              <option value="">Select source</option>
+              <option value="lead">From Lead</option>
+              <option value="referral">Referral</option>
+              <option value="repeat">Repeat Business</option>
+              <option value="website">Website</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>MM Division</label>
+            <input type="text" id="sbOpportunityMmDivision" placeholder="Enter division">
+          </div>
+
+          <div class="form-group">
+            <label>Sub Division</label>
+            <input type="text" id="sbOpportunitySubDivision" placeholder="Enter sub-division">
+          </div>
+
+          <div class="form-group">
+            <label>Region</label>
+            <select id="sbOpportunityRegion">
+              <option value="">Select region</option>
+              <option value="north">North</option>
+              <option value="south">South</option>
+              <option value="east">East</option>
+              <option value="west">West</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <select id="sbOpportunityStatus">
+              <option value="active">Active</option>
+              <option value="on-hold">On Hold</option>
+              <option value="lost">Lost</option>
+              <option value="won">Won</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Send Notification</label>
+            <select id="sbOpportunitySendNotification">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Upload Documents Section -->
+        <div class="form-section">
+          <h3 class="section-title">Upload Documents</h3>
+          <div class="upload-area form-upload" id="opportunityFormUploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Drag & drop files here or</p>
+            <button type="button" class="upload-btn small" id="opportunityFormUploadBtn">
+              <i class="fas fa-upload"></i> Upload
+            </button>
+            <input type="file" id="opportunityFormFileInput" multiple style="display: none;">
+          </div>
+          <div class="uploaded-files-list" id="opportunityFormUploadedFiles">
+            <!-- Uploaded files will appear here -->
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelOpportunityBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Opportunity</button>
+        </div>
+      </form>
+    </main>
+  </section>
+
+  <!-- CUSTOMER FORM SCREEN -->
+  <section class="screen hidden" id="customerFormScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromCustomerForm">←</span>
+      <div>
+        <h2>Create New Customer</h2>
+        <p>Add a new customer account</p>
+      </div>
+    </header>
+
+    <main class="form-container">
+      <form id="salesbuddyCustomerForm" class="customer-form">
+        <div class="form-columns">
+          <!-- Column 1 -->
+          <div class="form-group">
+            <label>Company Name <span class="req">*</span></label>
+            <input type="text" id="sbCustomerCompanyName" placeholder="Enter company name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Contact Person <span class="req">*</span></label>
+            <input type="text" id="sbCustomerContactPerson" placeholder="Enter contact person name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" id="sbCustomerEmail" placeholder="Enter email address" required>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" id="sbCustomerPhone" placeholder="Enter phone number" required>
+          </div>
+
+          <div class="form-group">
+            <label>Industry</label>
+            <select id="sbCustomerIndustry">
+              <option value="">Select industry</option>
+              <option value="technology">Technology</option>
+              <option value="finance">Finance</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="retail">Retail</option>
+              <option value="manufacturing">Manufacturing</option>
+            </select>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="form-group">
+            <label>Website</label>
+            <input type="url" id="sbCustomerWebsite" placeholder="Enter website URL">
+          </div>
+
+          <div class="form-group">
+            <label>Address</label>
+            <textarea id="sbCustomerAddress" placeholder="Enter full address" rows="2"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" id="sbCustomerCity" placeholder="Enter city">
+          </div>
+
+          <div class="form-group">
+            <label>State</label>
+            <input type="text" id="sbCustomerState" placeholder="Enter state">
+          </div>
+
+          <div class="form-group">
+            <label>Country</label>
+            <input type="text" id="sbCustomerCountry" placeholder="Enter country">
+          </div>
+        </div>
+
+        <!-- Additional Details -->
+        <div class="form-section">
+          <h3 class="section-title">Additional Details</h3>
+          <div class="form-columns">
+            <div class="form-group">
+              <label>Customer Type</label>
+              <select id="sbCustomerType">
+                <option value="enterprise">Enterprise</option>
+                <option value="smb">Small & Medium Business</option>
+                <option value="startup">Startup</option>
+                <option value="individual">Individual</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Annual Revenue</label>
+              <div class="currency-input">
+                <span class="currency-symbol">₹</span>
+                <input type="number" id="sbCustomerAnnualRevenue" placeholder="0.0" step="0.1">
+              </div>
+              <span class="form-hint">Value in lakhs</span>
+            </div>
+
+            <div class="form-group">
+              <label>Employee Count</label>
+              <input type="number" id="sbCustomerEmployeeCount" placeholder="Enter number of employees">
+            </div>
+
+            <div class="form-group">
+              <label>Account Status</label>
+              <select id="sbCustomerStatus">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="prospect">Prospect</option>
+                <option value="churned">Churned</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Account Manager</label>
+              <select id="sbCustomerAccountManager">
+                <option value="">Select account manager</option>
+                <option value="Rahul Kumar">Rahul Kumar</option>
+                <option value="Priya Sharma">Priya Sharma</option>
+                <option value="Amit Patel">Amit Patel</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Customer Since</label>
+              <input type="date" id="sbCustomerSince">
+            </div>
+          </div>
+        </div>
+
+        <!-- Notes Section -->
+        <div class="form-section">
+          <h3 class="section-title">Notes</h3>
+          <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea id="sbCustomerNotes" placeholder="Enter any additional notes about the customer..." rows="4"></textarea>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelCustomerBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Customer</button>
+        </div>
+      </form>
+    </main>
+  </section>
+
+  <!-- VISIT FORM SCREEN -->
+  <section class="screen hidden" id="visitFormScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromVisitForm">←</span>
+      <div>
+        <h2>Schedule Customer Visit</h2>
+        <p>Plan a new customer visit</p>
+      </div>
+    </header>
+
+    <main class="form-container">
+      <form id="salesbuddyVisitForm" class="visit-form">
+        <div class="form-columns">
+          <!-- Column 1 -->
+          <div class="form-group">
+            <label>Customer <span class="req">*</span></label>
+            <select id="sbVisitCustomer" required>
+              <option value="">Select customer</option>
+              <option value="1">Acme Corporation</option>
+              <option value="2">Global Tech Solutions</option>
+              <option value="3">Tech Innovations Inc</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Visit Date <span class="req">*</span></label>
+            <input type="date" id="sbVisitDate" required>
+          </div>
+
+          <div class="form-group">
+            <label>Start Time <span class="req">*</span></label>
+            <input type="time" id="sbVisitStartTime" required>
+          </div>
+
+          <div class="form-group">
+            <label>End Time <span class="req">*</span></label>
+            <input type="time" id="sbVisitEndTime" required>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="form-group">
+            <label>Visit Type</label>
+            <select id="sbVisitType">
+              <option value="business-review">Business Review</option>
+              <option value="product-demo">Product Demo</option>
+              <option value="contract-renewal">Contract Renewal</option>
+              <option value="sales-meeting">Sales Meeting</option>
+              <option value="support-visit">Support Visit</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Priority</label>
+            <select id="sbVisitPriority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="sbVisitLocation" placeholder="Enter location address">
+          </div>
+
+          <div class="form-group">
+            <label>Contact Person</label>
+            <input type="text" id="sbVisitContactPerson" placeholder="Enter contact person name">
+          </div>
+
+          <div class="form-group">
+            <label>Contact Phone</label>
+            <input type="tel" id="sbVisitContactPhone" placeholder="Enter contact phone number">
+          </div>
+        </div>
+
+        <!-- Agenda & Objectives -->
+        <div class="form-section">
+          <h3 class="section-title">Agenda & Objectives</h3>
+          <div class="form-group">
+            <label>Visit Objective <span class="req">*</span></label>
+            <textarea id="sbVisitObjective" placeholder="What do you want to achieve from this visit?" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Agenda Items</label>
+            <textarea id="sbVisitAgenda" placeholder="Enter agenda items (one per line)..." rows="4"></textarea>
+            <span class="form-hint">Enter each agenda item on a new line</span>
+          </div>
+
+          <div class="form-group">
+            <label>Materials to Bring</label>
+            <textarea id="sbVisitMaterials" placeholder="List materials to bring..." rows="2"></textarea>
+          </div>
+        </div>
+
+        <!-- Travel Details -->
+        <div class="form-section">
+          <h3 class="section-title">Travel Details</h3>
+          <div class="form-columns">
+            <div class="form-group">
+              <label>Travel Mode</label>
+              <select id="sbVisitTravelMode">
+                <option value="car">Car</option>
+                <option value="train">Train</option>
+                <option value="flight">Flight</option>
+                <option value="public-transport">Public Transport</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Estimated Travel Time</label>
+              <input type="text" id="sbVisitTravelTime" placeholder="e.g., 2 hours">
+            </div>
+
+            <div class="form-group">
+              <label>Travel Expenses (₹)</label>
+              <input type="number" id="sbVisitExpenses" placeholder="Enter estimated expenses">
+            </div>
+
+            <div class="form-group">
+              <label>Accommodation Required</label>
+              <select id="sbVisitAccommodation">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Follow-up -->
+        <div class="form-section">
+          <h3 class="section-title">Follow-up</h3>
+          <div class="form-columns">
+            <div class="form-group">
+              <label>Follow-up Date</label>
+              <input type="date" id="sbVisitFollowUpDate">
+            </div>
+
+            <div class="form-group">
+              <label>Follow-up Action</label>
+              <select id="sbVisitFollowUpAction">
+                <option value="">Select action</option>
+                <option value="send-proposal">Send Proposal</option>
+                <option value="schedule-call">Schedule Call</option>
+                <option value="send-quote">Send Quote</option>
+                <option value="provide-demo">Provide Demo</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Assigned To</label>
+              <select id="sbVisitAssignedTo">
+                <option value="">Select person</option>
+                <option value="Rahul Kumar">Rahul Kumar</option>
+                <option value="Priya Sharma">Priya Sharma</option>
+                <option value="Amit Patel">Amit Patel</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelVisitBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Schedule Visit</button>
+        </div>
+      </form>
+    </main>
+  </section>
+
+  <!-- VISIT DETAIL SCREEN -->
+  <section class="screen hidden" id="visitDetailScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromVisitDetail">←</span>
+      <div>
+        <h2>Visit Details</h2>
+        <p id="visitDetailCustomer">Customer Name</p>
+      </div>
+      <button class="edit-btn" id="editVisitBtn">
+        <i class="fas fa-edit"></i>
+      </button>
+    </header>
+
+    <main class="visit-detail-content">
+      <!-- Visit Header Card -->
+      <div class="detail-header-card purple-card">
+        <div class="visit-icon-large">
+          <div class="icon-box purple">📍</div>
+        </div>
+        <div class="visit-detail-info">
+          <div class="visit-detail-header">
+            <h3 id="visitDetailTitle">Quarterly Business Review</h3>
+            <span class="visit-type" id="visitDetailType">Business Review</span>
+          </div>
+          <div class="visit-badges">
+            <span class="visit-priority-badge high" id="visitDetailPriority">High</span>
+            <span class="visit-status-badge scheduled" id="visitDetailStatus">Scheduled</span>
+          </div>
+          <p class="visit-description-detail" id="visitDetailDescription">
+            Discuss Q1 performance and Q2 roadmap with key stakeholders.
+          </p>
+        </div>
+      </div>
+
+      <!-- Visit Details -->
+      <div class="detail-section">
+        <h4>Visit Details</h4>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <i class="fas fa-calendar"></i>
+            <div>
+              <p class="detail-label">Date</p>
+              <p class="detail-value" id="visitDetailDate">2024-03-18</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <p class="detail-label">Time</p>
+              <p class="detail-value" id="visitDetailTime">10:00 AM - 11:30 AM</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <p class="detail-label">Location</p>
+              <p class="detail-value" id="visitDetailLocation">123 Business St, Mumbai</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-user"></i>
+            <div>
+              <p class="detail-label">Contact Person</p>
+              <p class="detail-value" id="visitDetailContactPerson">James Wilson</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <p class="detail-label">Contact Phone</p>
+              <p class="detail-value" id="visitDetailContactPhone">+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-user-tie"></i>
+            <div>
+              <p class="detail-label">Assigned To</p>
+              <p class="detail-value" id="visitDetailAssignedTo">Rahul Kumar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Objectives & Agenda -->
+      <div class="detail-section">
+        <h4>Objectives & Agenda</h4>
+        <div class="agenda-section">
+          <h5>Objective</h5>
+          <p class="agenda-content" id="visitDetailObjective">
+            Discuss Q1 performance metrics and plan Q2 strategic initiatives. Review customer feedback and identify upsell opportunities.
+          </p>
+        </div>
+        
+        <div class="agenda-section">
+          <h5>Agenda</h5>
+          <ul class="agenda-list" id="visitDetailAgenda">
+            <li>Review Q1 performance metrics (30 mins)</li>
+            <li>Discuss customer feedback (20 mins)</li>
+            <li>Q2 roadmap presentation (30 mins)</li>
+            <li>Identify upsell opportunities (10 mins)</li>
+          </ul>
+        </div>
+
+        <div class="agenda-section">
+          <h5>Materials Required</h5>
+          <p class="agenda-content" id="visitDetailMaterials">
+            Laptop, presentation slides, sample reports, proposal documents.
+          </p>
+        </div>
+      </div>
+
+      <!-- Travel Information -->
+      <div class="detail-section">
+        <h4>Travel Information</h4>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <i class="fas fa-car"></i>
+            <div>
+              <p class="detail-label">Travel Mode</p>
+              <p class="detail-value" id="visitDetailTravelMode">Car</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-hourglass-half"></i>
+            <div>
+              <p class="detail-label">Travel Time</p>
+              <p class="detail-value" id="visitDetailTravelTime">2 hours</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-rupee-sign"></i>
+            <div>
+              <p class="detail-label">Estimated Expenses</p>
+              <p class="detail-value" id="visitDetailExpenses">₹1,500</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-bed"></i>
+            <div>
+              <p class="detail-label">Accommodation</p>
+              <p class="detail-value" id="visitDetailAccommodation">Not Required</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Follow-up Information -->
+      <div class="detail-section">
+        <h4>Follow-up Information</h4>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <i class="fas fa-calendar-check"></i>
+            <div>
+              <p class="detail-label">Follow-up Date</p>
+              <p class="detail-value" id="visitDetailFollowUpDate">2024-03-25</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-tasks"></i>
+            <div>
+              <p class="detail-label">Follow-up Action</p>
+              <p class="detail-value" id="visitDetailFollowUpAction">Send Proposal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Update -->
+      <div class="detail-section">
+        <h4>Update Status</h4>
+        <div class="status-buttons">
+          <button class="status-btn" data-status="scheduled">Scheduled</button>
+          <button class="status-btn" data-status="in-progress">In Progress</button>
+          <button class="status-btn" data-status="completed">Completed</button>
+          <button class="status-btn" data-status="cancelled">Cancelled</button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="detail-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="notes">Comments</button>
+          <button class="tab-btn" data-tab="activity">Activity</button>
+          <button class="tab-btn" data-tab="documents">Documents</button>
+        </div>
+        
+        <div class="tab-content active" id="notesTab">
+          <div class="notes-section">
+            <div class="notes-content" id="visitDetailDiscussionPoints">
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-author">Rahul Kumar</span>
+                  <span class="note-time">Mar 18, 10:30 AM</span>
+                </div>
+                <p class="note-text">Customer expressed satisfaction with Q1 services. Interested in expanding to new regions.</p>
+              </div>
+              <div class="note-item">
+                <div class="note-header">
+                  <span class="note-author">James Wilson</span>
+                  <span class="note-time">Mar 18, 11:00 AM</span>
+                </div>
+                <p class="note-text">Requested detailed proposal for regional expansion by next week.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="add-note-container">
+            <textarea placeholder="Add visit comments..." rows="3" class="note-input" id="visitNoteInput"></textarea>
+            <button class="add-note-btn">
+              <i class="fas fa-plus"></i> Add Comment
+            </button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="activityTabVisit">
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-plus"></i></div>
+              <div class="activity-content">
+                <p>Visit scheduled</p>
+                <span class="activity-time">Mar 15, 2024</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-calendar"></i></div>
+              <div class="activity-content">
+                <p>Date confirmed with customer</p>
+                <span class="activity-time">Mar 16, 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="documentsTabVisit">
+          <div class="documents-list">
+            <div class="document-item">
+              <i class="fas fa-file-pdf"></i>
+              <div>
+                <p>Q1_Performance_Report.pdf</p>
+                <span>3.2 MB • Mar 17, 2024</span>
+              </div>
+              <button class="view-doc-btn">View</button>
+            </div>
+            <div class="document-item">
+              <i class="fas fa-file-powerpoint"></i>
+              <div>
+                <p>Q2_Roadmap_Presentation.pptx</p>
+                <span>5.1 MB • Mar 17, 2024</span>
+              </div>
+              <button class="view-doc-btn">View</button>
+            </div>
+          </div>
+          <button class="upload-doc-btn small">
+            <i class="fas fa-upload"></i> Upload
+          </button>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- NOTIFICATIONS SCREEN -->
+  <section class="screen hidden" id="notificationsScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromNotifications">←</span>
+      <div>
+        <h2>Notifications</h2>
+        <p>All your alerts and updates</p>
+      </div>
+      <button class="edit-btn" id="markAllReadBtn">
+        <i class="fas fa-check-double"></i>
+      </button>
+    </header>
+
+    <div class="filter-section">
+      <button class="filter-option active" data-filter="all">All</button>
+      <button class="filter-option" data-filter="unread">Unread</button>
+      <button class="filter-option" data-filter="tasks">Tasks</button>
+      <button class="filter-option" data-filter="leads">Leads</button>
+      <button class="filter-option" data-filter="system">System</button>
+    </div>
+
+    <main class="leads-list">
+      <div class="notification-full-item unread" data-type="task" data-id="1">
+        <div class="notification-full-icon">
+          <div class="icon-box blue">⏰</div>
+        </div>
+        <div class="notification-full-content">
+          <div class="notification-full-header">
+            <h4>Task Due Soon</h4>
+            <span class="notification-time">5 min ago</span>
+          </div>
+          <p class="notification-full-desc">Follow up with ABC Corp is due in 1 hour</p>
+          <div class="notification-full-actions">
+            <button class="action-btn small">Snooze</button>
+            <button class="action-btn small primary">Complete</button>
+          </div>
+        </div>
+        <button class="notification-dismiss">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="notification-full-item unread" data-type="lead" data-id="2">
+        <div class="notification-full-icon">
+          <div class="icon-box green">👤</div>
+        </div>
+        <div class="notification-full-content">
+          <div class="notification-full-header">
+            <h4>New Lead Assigned</h4>
+            <span class="notification-time">30 min ago</span>
+          </div>
+          <p class="notification-full-desc">John Smith from Tech Innovations</p>
+          <div class="notification-full-actions">
+            <button class="action-btn small">View Lead</button>
+            <button class="action-btn small primary">Contact</button>
+          </div>
+        </div>
+        <button class="notification-dismiss">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="notification-full-item" data-type="system" data-id="3">
+        <div class="notification-full-icon">
+          <div class="icon-box yellow">💰</div>
+        </div>
+        <div class="notification-full-content">
+          <div class="notification-full-header">
+            <h4>Deal Stage Updated</h4>
+            <span class="notification-time">1 hour ago</span>
+          </div>
+          <p class="notification-full-desc">Enterprise Software License moved to Negotiation</p>
+          <div class="notification-full-actions">
+            <button class="action-btn small">View Deal</button>
+          </div>
+        </div>
+        <button class="notification-dismiss">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="notification-full-item" data-type="system" data-id="4">
+        <div class="notification-full-icon">
+          <div class="icon-box teal">📈</div>
+        </div>
+        <div class="notification-full-content">
+          <div class="notification-full-header">
+            <h4>Monthly Target Achieved</h4>
+            <span class="notification-time">2 hours ago</span>
+          </div>
+          <p class="notification-full-desc">Congratulations! You've achieved 90% of your monthly target</p>
+          <div class="notification-full-actions">
+            <button class="action-btn small">View Report</button>
+          </div>
+        </div>
+        <button class="notification-dismiss">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="notification-full-item" data-type="task" data-id="5">
+        <div class="notification-full-icon">
+          <div class="icon-box orange">📅</div>
+        </div>
+        <div class="notification-full-content">
+          <div class="notification-full-header">
+            <h4>Meeting Reminder</h4>
+            <span class="notification-time">3 hours ago</span>
+          </div>
+          <p class="notification-full-desc">Team sync meeting at 2:00 PM today</p>
+          <div class="notification-full-actions">
+            <button class="action-btn small">Snooze</button>
+            <button class="action-btn small primary">Join</button>
+          </div>
+        </div>
+        <button class="notification-dismiss">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </main>
+  </section>
+
+  <!-- IDEAS/INSIGHTS SCREEN -->
+  <section class="screen hidden" id="ideasScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromIdeas">←</span>
+      <div>
+        <h2>AI Insights</h2>
+        <p>Smart recommendations for you</p>
+      </div>
+      <div class="notification" id="ideasNotification">
+        🔔 <span>3</span>
+      </div>
+    </header>
+
+    <div class="search-box ideas-search">
+      🔍 <input type="text" placeholder="Search insights..." class="search-input" id="ideasSearch">
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="cards compact-cards">
+      <div class="card success-card">
+        <div class="card-icon green">📈</div>
+        <div class="card-title">Opportunities</div>
+        <div class="card-value">5</div>
+      </div>
+      <div class="card primary-card">
+        <div class="card-icon blue">🎯</div>
+        <div class="card-title">Actions</div>
+        <div class="card-value">3</div>
+      </div>
+      <div class="card warning-card">
+        <div class="card-icon yellow">⚠</div>
+        <div class="card-title">Alerts</div>
+        <div class="card-value">2</div>
+      </div>
+    </div>
+
+    <main class="leads-list">
+      <h3 class="section-title">
+        <span class="sparkle-icon">✨</span>
+        Today's Insights
+      </h3>
+      
+      <div id="insightsList">
+        <!-- Insights will be loaded dynamically by JavaScript -->
+      </div>
+    </main>
+  </section>
+
+  <!-- PLANNER SCREEN -->
+  <section class="screen hidden" id="plannerScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromPlanner">←</span>
+      <div>
+        <h2>Planner</h2>
+        <p>Your schedule for today</p>
+      </div>
+      <div class="notification">
+        🔔 <span>3</span>
+      </div>
+    </header>
+
+    <!-- Week View -->
+    <div class="week-view">
+      <div class="week-nav">
+        <button class="nav-btn" id="prevWeekBtn">‹</button>
+        <button class="nav-btn today-btn" id="todayBtn">Today</button>
+        <button class="nav-btn" id="nextWeekBtn">›</button>
+      </div>
+      
+      <div class="calendar-days">
+        <div class="calendar-date today">
+          <div class="day-name">Sun</div>
+          <div class="day-number">17</div>
+        </div>
+        <div class="calendar-date">
+          <div class="day-name">Mon</div>
+          <div class="day-number">18</div>
+        </div>
+        <div class="calendar-date selected">
+          <div class="day-name">Tue</div>
+          <div class="day-number">19</div>
+        </div>
+        <div class="calendar-date">
+          <div class="day-name">Wed</div>
+          <div class="day-number">20</div>
+        </div>
+        <div class="calendar-date">
+          <div class="day-name">Thu</div>
+          <div class="day-number">21</div>
+        </div>
+        <div class="calendar-date">
+          <div class="day-name">Fri</div>
+          <div class="day-number">22</div>
+        </div>
+        <div class="calendar-date">
+          <div class="day-name">Sat</div>
+          <div class="day-number">23</div>
+        </div>
+      </div>
+    </div>
+
+    <main class="tasks-list">
+      <div class="section-header">
+        <h3>Today's Schedule</h3>
+        <button class="add-btn" id="addEventBtn">
+          <i class="fas fa-plus"></i> Add Event
+        </button>
+      </div>
+      
+      <div id="plannerEvents">
+        <!-- Events will be loaded dynamically by JavaScript -->
+      </div>
+    </main>
+  </section>
+
+  <!-- OPPORTUNITIES SCREEN -->
+  <section class="screen hidden" id="opportunitiesScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromOpportunities">←</span>
+      <div>
+        <h2>Opportunities</h2>
+        <p>12 new this month</p>
+      </div>
+      <button class="action-btn delete-btn" id="deleteLeadBtn" style="width: 10px; height: 30px; padding: 2px;">
+    <i class="fas fa-trash" style="font-size: 12px;"></i>
+</button>
+    </header>
+   
+    <div class="filter-section">
+      <div class="search-box">
+        🔍 <input type="text" placeholder="Search opportunities..." class="search-input" id="opportunitiesSearch">
+      </div>
+      <button class="filter-btn" id="opportunitiesFilterBtn">Filter</button>
+    </div>
+
+    <div class="filter-panel hidden" id="opportunitiesFilterPanel">
+      <div class="filter-group">
+        <h5>Stage</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="stage" data-value="all">All</button>
+          <button class="filter-option" data-filter="stage" data-value="discovery">Discovery</button>
+          <button class="filter-option" data-filter="stage" data-value="proposal">Proposal</button>
+          <button class="filter-option" data-filter="stage" data-value="negotiation">Negotiation</button>
+          <button class="filter-option" data-filter="stage" data-value="closed-won">Closed Won</option>
+          <button class="filter-option" data-filter="stage" data-value="closed-lost">Closed Lost</button>
+        </div>
+      </div>
+      <button class="clear-filters">Clear All</button>
+    </div>
+
+    <main class="leads-list">
+      <!-- Opportunity Examples -->
+      <div class="opportunity-card" data-stage="negotiation" data-opportunity-id="1">
+        <div class="opportunity-icon">
+          <div class="icon-box success">📈</div>
+        </div>
+        <div class="opportunity-info">
+          <div class="opportunity-header">
+            <h4 class="opportunity-title">Enterprise Software License</h4>
+            <span class="opportunity-badge negotiation">Negotiation</span>
+          </div>
+          <p class="opportunity-company">ABC Corporation</p>
+          <div class="opportunity-details">
+            <span class="opportunity-value">₹12.5L</span>
+            <span class="opportunity-probability">80% probability</span>
+            <span class="opportunity-date">⏰ 2024-04-15</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="opportunity-card" data-stage="proposal" data-opportunity-id="2">
+        <div class="opportunity-icon">
+          <div class="icon-box primary">📈</div>
+        </div>
+        <div class="opportunity-info">
+          <div class="opportunity-header">
+            <h4 class="opportunity-title">Cloud Migration Project</h4>
+            <span class="opportunity-badge proposal">Proposal</span>
+          </div>
+          <p class="opportunity-company">XYZ Ltd</p>
+          <div class="opportunity-details">
+            <span class="opportunity-value">₹8.3L</span>
+            <span class="opportunity-probability">60% probability</span>
+            <span class="opportunity-date">⏰ 2024-04-30</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="opportunity-card" data-stage="discovery" data-opportunity-id="3">
+        <div class="opportunity-icon">
+          <div class="icon-box blue">📈</div>
+        </div>
+        <div class="opportunity-info">
+          <div class="opportunity-header">
+            <h4 class="opportunity-title">Digital Marketing Package</h4>
+            <span class="opportunity-badge discovery">Discovery</span>
+          </div>
+          <p class="opportunity-company">E-Commerce Solutions</p>
+          <div class="opportunity-details">
+            <span class="opportunity-value">₹6.5L</span>
+            <span class="opportunity-probability">40% probability</span>
+            <span class="opportunity-date">⏰ 2024-05-10</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="opportunity-card" data-stage="closed-won" data-opportunity-id="4">
+        <div class="opportunity-icon">
+          <div class="icon-box green">💰</div>
+        </div>
+        <div class="opportunity-info">
+          <div class="opportunity-header">
+            <h4 class="opportunity-title">CRM Implementation</h4>
+            <span class="opportunity-badge success">Closed Won</span>
+          </div>
+          <p class="opportunity-company">Retail Chain Inc</p>
+          <div class="opportunity-details">
+            <span class="opportunity-value">₹15.2L</span>
+            <span class="opportunity-probability">100% probability</span>
+            <span class="opportunity-date">⏰ 2024-03-10</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <button class="fab mini-fab" id="createOpportunityBtn">
+      <i class="fas fa-plus"></i>
+    </button>
+  </section>
+
+  <!-- PROPOSALS SCREEN -->
+  <section class="screen hidden" id="proposalsScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromProposals">←</span>
+      <div>
+        <h2>Proposals</h2>
+        <p>7 new this month</p>
+      </div>
+      <button class="edit-btn" id="createProposalFab">
+        <i class="fas fa-plus"></i>
+      </button>
+    </header>
+
+    <div class="filter-section">
+      <div class="search-box">
+        🔍 <input type="text" placeholder="Search proposals..." class="search-input" id="proposalsSearch">
+      </div>
+      <button class="filter-btn" id="proposalsFilterBtn">Filter</button>
+    </div>
+
+    <div class="filter-panel hidden" id="proposalsFilterPanel">
+      <div class="filter-group">
+        <h5>Status</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="status" data-value="all">All</button>
+          <button class="filter-option" data-filter="status" data-value="draft">Draft</button>
+          <button class="filter-option" data-filter="status" data-value="submitted">Submitted</button>
+          <button class="filter-option" data-filter="status" data-value="under-review">Under Review</button>
+          <button class="filter-option" data-filter="status" data-value="approved">Approved</button>
+          <button class="filter-option" data-filter="status" data-value="rejected">Rejected</button>
+        </div>
+      </div>
+      <button class="clear-filters">Clear All</button>
+    </div>
+
+    <main class="leads-list">
+      <div class="proposal-card" data-status="submitted" data-proposal-id="1">
+        <div class="proposal-icon">
+          <div class="icon-box primary">📄</div>
+        </div>
+        <div class="proposal-info">
+          <div class="proposal-header">
+            <h4 class="proposal-title">Q1 Marketing Campaign</h4>
+            <span class="proposal-badge submitted">Submitted</span>
+          </div>
+          <p class="proposal-client">Brand Masters / Digital Marketing Agency</p>
+          <div class="proposal-details">
+            <span class="proposal-value">₹9.5L</span>
+            <span class="proposal-probability">75%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proposal-card" data-status="approved" data-proposal-id="2">
+        <div class="proposal-icon">
+          <div class="icon-box success">📄</div>
+        </div>
+        <div class="proposal-info">
+          <div class="proposal-header">
+            <h4 class="proposal-title">Website Redesign</h4>
+            <span class="proposal-badge success">Approved</span>
+          </div>
+          <p class="proposal-client">Digital First / Web Solutions Agency</p>
+          <div class="proposal-details">
+            <span class="proposal-value">₹7.2L</span>
+            <span class="proposal-probability">90%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proposal-card" data-status="under-review" data-proposal-id="3">
+        <div class="proposal-icon">
+          <div class="icon-box warning">📄</div>
+        </div>
+        <div class="proposal-info">
+          <div class="proposal-header">
+            <h4 class="proposal-title">Enterprise Software License</h4>
+            <span class="proposal-badge warning">Under Review</span>
+          </div>
+          <p class="proposal-client">ABC Corporation / Digital Solutions Agency</p>
+          <div class="proposal-details">
+            <span class="proposal-value">₹12.5L</span>
+            <span class="proposal-probability">85%</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <button class="fab mini-fab" id="createProposalBtn">
+      <i class="fas fa-plus"></i>
+    </button>
+  </section>
+
+  <!-- PROPOSAL DETAIL SCREEN -->
+  <section class="screen hidden" id="proposalDetailScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromProposalDetail">←</span>
+      <div>
+        <h2>Proposal Details</h2>
+        <p id="proposalDetailCompany">Brand Masters</p>
+      </div>
+      <button class="edit-btn" id="editProposalBtn">
+        <i class="fas fa-edit"></i>
+      </button>
+    </header>
+
+    <main class="lead-detail-content">
+      <!-- Proposal Header Card -->
+      <div class="detail-header-card primary-card">
+        <div class="proposal-detail-header">
+          <h3 id="proposalDetailTitle">Q1 Marketing Campaign</h3>
+          <span class="proposal-badge submitted" id="proposalDetailStatus">Submitted</span>
+        </div>
+        <div class="proposal-detail-value">
+          <span class="amount" id="proposalDetailValue">₹9.5L</span>
+          <span class="proposal-probability" id="proposalDetailProbability">75% probability</span>
+        </div>
+        <div class="progress-bar">
+          <span class="progress-fill" id="proposalProgressBar" style="width: 75%"></span>
+        </div>
+        <p class="proposal-description" id="proposalDetailDescription">
+          Comprehensive digital marketing campaign including SEO, PPC, and social media management for Q1 2024.
+        </p>
+        <div class="proposal-client-info">
+          <div class="client-item">
+            <i class="fas fa-building"></i>
+            <span>Client: <strong id="proposalDetailClient">Brand Masters</strong></span>
+          </div>
+          <div class="client-item">
+            <i class="fas fa-briefcase"></i>
+            <span>Agency: <strong id="proposalDetailAgency">Digital Marketing Agency</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Approval Schema Progress -->
+      <div class="detail-section">
+        <h4>Approval Progress</h4>
+        <div class="approval-progress">
+          <div class="approval-step completed">
+            <div class="step-number">1</div>
+            <div class="step-info">
+              <p class="step-title">Draft Created</p>
+              <p class="step-status">Completed</p>
+            </div>
+            <div class="step-line"></div>
+          </div>
+          <div class="approval-step completed">
+            <div class="step-number">2</div>
+            <div class="step-info">
+              <p class="step-title">Team Review</p>
+              <p class="step-status">Completed</p>
+            </div>
+            <div class="step-line"></div>
+          </div>
+          <div class="approval-step active">
+            <div class="step-number">3</div>
+            <div class="step-info">
+              <p class="step-title">Management Approval</p>
+              <p class="step-status">In Progress</p>
+            </div>
+            <div class="step-line"></div>
+          </div>
+          <div class="approval-step">
+            <div class="step-number">4</div>
+            <div class="step-info">
+              <p class="step-title">Client Submission</p>
+              <p class="step-status">Pending</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details Section -->
+      <div class="detail-section">
+        <h4>Details</h4>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <i class="fas fa-sitemap"></i>
+            <div>
+              <p class="detail-label">Division</p>
+              <p class="detail-value" id="proposalDetailDivision">Marketing Division</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <p class="detail-label">Region</p>
+              <p class="detail-value" id="proposalDetailRegion">North India</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-box"></i>
+            <div>
+              <p class="detail-label">MM Product</p>
+              <p class="detail-value" id="proposalDetailProduct">Marketing Suite</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-tag"></i>
+            <div>
+              <p class="detail-label">Brand</p>
+              <p class="detail-value" id="proposalDetailBrand">MarketingBrand</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-industry"></i>
+            <div>
+              <p class="detail-label">Industry</p>
+              <p class="detail-value" id="proposalDetailIndustry">Digital Marketing</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-user"></i>
+            <div>
+              <p class="detail-label">Assigned To</p>
+              <p class="detail-value" id="proposalDetailOwner">Rahul Kumar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags Section -->
+      <div class="detail-section">
+        <h4>Tags</h4>
+        <div class="tags-container" id="proposalTags">
+          <span class="tag">Digital Marketing</span>
+          <span class="tag">Q1 Campaign</span>
+          <span class="tag">Premium Client</span>
+        </div>
+      </div>
+
+      <!-- Remaining Details Card -->
+      <div class="detail-section remaining-details">
+        <h4>Additional Information</h4>
+        <div class="remaining-details-card">
+          <div class="remaining-details-grid">
+            <div class="remaining-item">
+              <span class="remaining-label">Client Contact</span>
+              <span class="remaining-value" id="proposalDetailClientContact">john@brandmasters.com</span>
+            </div>
+            <div class="remaining-item">
+              <span class="remaining-label">Client Product</span>
+              <span class="remaining-value" id="proposalDetailClientProduct">Fashion Retail</span>
+            </div>
+            <div class="remaining-item">
+              <span class="remaining-label">Rolling Month</span>
+              <span class="remaining-value" id="proposalDetailRollingMonth">March 2024</span>
+            </div>
+            <div class="remaining-item">
+              <span class="remaining-label">Source</span>
+              <span class="remaining-value" id="proposalDetailSource">Referral</span>
+            </div>
+            <div class="remaining-item">
+              <span class="remaining-label">Sub-Division</span>
+              <span class="remaining-value" id="proposalDetailSubDivision">Digital Marketing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Section -->
+      <div class="detail-section">
+        <div class="section-header">
+          <h4>Tasks</h4>
+          <button class="add-task-btn" id="addTaskForProposalBtn">
+            <i class="fas fa-plus"></i> Add Task
+          </button>
+        </div>
+        <div class="tasks-list">
+          <div class="task-item" data-task-id="1">
+            <label class="task-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <div class="task-info">
+              <div class="task-header">
+                <h4>Send final proposal to client</h4>
+                <span class="task-badge high">High</span>
+              </div>
+              <p class="task-time">⏰ Due: Tomorrow, 10:00 AM</p>
+            </div>
+          </div>
+          <div class="task-item" data-task-id="2">
+            <label class="task-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+            </label>
+            <div class="task-info">
+              <div class="task-header">
+                <h4>Follow up on proposal feedback</h4>
+                <span class="task-badge medium">Medium</span>
+              </div>
+              <p class="task-time">⏰ Due: March 20, 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proposal Versions -->
+      <div class="detail-section">
+        <div class="section-header">
+          <h4>Proposal Versions</h4>
+          <button class="add-task-btn" id="addNewVersionBtn">
+            <i class="fas fa-plus"></i> New Version
+          </button>
+        </div>
+        <div class="versions-list">
+          <div class="version-item">
+            <div class="version-header">
+              <div>
+                <h5>Marketing_Proposal_v3.pdf</h5>
+                <span class="version-meta">Version 3 • March 15, 2024 • 4.5 MB</span>
+              </div>
+              <span class="version-badge current">Current</span>
+            </div>
+            <div class="version-actions">
+              <button class="icon-btn"><i class="fas fa-download"></i></button>
+              <button class="icon-btn"><i class="fas fa-eye"></i></button>
+              <button class="icon-btn"><i class="fas fa-share"></i></button>
+            </div>
+          </div>
+          <div class="version-item">
+            <div class="version-header">
+              <div>
+                <h5>Marketing_Proposal_v2.pdf</h5>
+                <span class="version-meta">Version 2 • March 10, 2024 • 4.2 MB</span>
+              </div>
+              <span class="version-badge previous">Previous</span>
+            </div>
+            <div class="version-actions">
+              <button class="icon-btn"><i class="fas fa-download"></i></button>
+              <button class="icon-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="version-item">
+            <div class="version-header">
+              <div>
+                <h5>Marketing_Proposal_v1.pdf</h5>
+                <span class="version-meta">Version 1 • March 5, 2024 • 3.8 MB</span>
+              </div>
+              <span class="version-badge previous">Previous</span>
+            </div>
+            <div class="version-actions">
+              <button class="icon-btn"><i class="fas fa-download"></i></button>
+              <button class="icon-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="action-buttons">
+        <button class="action-btn primary">
+          <i class="fas fa-download"></i> Download PDF
+        </button>
+        <button class="action-btn secondary">
+          <i class="fas fa-share"></i> Share with Client
+        </button>
+        <button class="action-btn success">
+          <i class="fas fa-check"></i> Mark as Approved
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="detail-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="chat">Chat</button>
+          <button class="tab-btn" data-tab="activity">Activity</button>
+          <button class="tab-btn" data-tab="documents">Documents</button>
+          <button class="tab-btn" data-tab="approval">Approval History</button>
+        </div>
+        
+        <div class="tab-content active" id="chatTabProposal">
+          <div class="chat-history">
+            <div class="chat-message ai">
+              <div class="message-avatar">RK</div>
+              <div class="message-content">
+                <p>Proposal submitted to management for approval.</p>
+                <span class="message-time">1 day ago</span>
+              </div>
+            </div>
+            <div class="chat-message ai">
+              <div class="message-avatar">SS</div>
+              <div class="message-content">
+                <p>Management has requested some changes to the pricing section.</p>
+                <span class="message-time">2 hours ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-container">
+            <input type="text" placeholder="Type a message..." class="chat-input-detail">
+            <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="activityTabProposal">
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-plus"></i></div>
+              <div class="activity-content">
+                <p>Created proposal</p>
+                <span class="activity-time">Mar 5, 2024</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-edit"></i></div>
+              <div class="activity-content">
+                <p>Updated to version 2</p>
+                <span class="activity-time">Mar 10, 2024</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-check"></i></div>
+              <div class="activity-content">
+                <p>Team review completed</p>
+                <span class="activity-time">Mar 12, 2024</span>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-upload"></i></div>
+              <div class="activity-content">
+                <p>Submitted for management approval</p>
+                <span class="activity-time">Mar 15, 2024</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="documentsTabProposal">
+          <div class="documents-list">
+            <div class="document-item">
+              <i class="fas fa-file-pdf"></i>
+              <div>
+                <p>Marketing_Proposal_v3.pdf</p>
+                <span>4.5 MB • Current Version • Mar 15, 2024</span>
+              </div>
+              <button class="view-doc-btn">View</button>
+            </div>
+            <div class="document-item">
+              <i class="fas fa-file-pdf"></i>
+              <div>
+                <p>Budget_Spreadsheet.xlsx</p>
+                <span>2.1 MB • Mar 14, 2024</span>
+              </div>
+              <button class="view-doc-btn">View</button>
+            </div>
+            <div class="document-item">
+              <i class="fas fa-file-word"></i>
+              <div>
+                <p>Scope_of_Work.docx</p>
+                <span>1.8 MB • Mar 13, 2024</span>
+              </div>
+              <button class="view-doc-btn">View</button>
+            </div>
+          </div>
+          <button class="upload-doc-btn small">
+            <i class="fas fa-upload"></i> Upload Document
+          </button>
+        </div>
+
+        <div class="tab-content" id="approvalTab">
+          <div class="approval-history">
+            <div class="approval-item">
+              <div class="approval-icon completed">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="approval-content">
+                <div class="approval-header">
+                  <h5>Draft Created</h5>
+                  <span class="approval-time">Mar 5, 2024</span>
+                </div>
+                <p>Initial draft created by Rahul Kumar</p>
+              </div>
+            </div>
+            <div class="approval-item">
+              <div class="approval-icon completed">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="approval-content">
+                <div class="approval-header">
+                  <h5>Team Review</h5>
+                  <span class="approval-time">Mar 12, 2024</span>
+                </div>
+                <p>Reviewed by Priya Sharma • Status: Approved</p>
+                <p class="approval-comment">"Looks good, minor pricing adjustments needed."</p>
+              </div>
+            </div>
+            <div class="approval-item">
+              <div class="approval-icon in-progress">
+                <i class="fas fa-sync-alt"></i>
+              </div>
+              <div class="approval-content">
+                <div class="approval-header">
+                  <h5>Management Approval</h5>
+                  <span class="approval-time">In Progress</span>
+                </div>
+                <p>Awaiting approval from Amit Patel</p>
+              </div>
+            </div>
+            <div class="approval-item">
+              <div class="approval-icon pending">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="approval-content">
+                <div class="approval-header">
+                  <h5>Client Submission</h5>
+                  <span class="approval-time">Pending</span>
+                </div>
+                <p>Will be submitted after management approval</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- CUSTOMERS SCREEN -->
+  <section class="screen hidden" id="customersScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromCustomers">←</span>
+      <div>
+        <h2>Customers</h2>
+        <p>156 active accounts</p>
+      </div>
+    </header>
+
+    <div class="search-box">
+      🔍 <input type="text" placeholder="Search customers..." class="search-input" id="customersSearch">
+    </div>
+
+    <main class="leads-list">
+      <div class="customer-card" data-customer-id="1">
+        <div class="customer-avatar success-gradient">AC</div>
+        <div class="customer-info">
+          <div class="customer-header">
+            <h4 class="customer-name">Acme Corporation</h4>
+            <span class="customer-badge success">active</span>
+          </div>
+          <p class="customer-contact">James Wilson</p>
+          <div class="customer-details">
+            <div class="detail-row">
+              <i class="fas fa-envelope"></i>
+              <span>james@acme.com</span>
+            </div>
+            <div class="detail-row">
+              <i class="fas fa-phone"></i>
+              <span>+91 98765 43210</span>
+            </div>
+            <div class="detail-row">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Mumbai</span>
+            </div>
+            <div class="detail-row">
+              <i class="fas fa-rupee-sign"></i>
+              <span class="customer-value"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="customer-card" data-customer-id="2">
+        <div class="customer-avatar primary-gradient">GT</div>
+        <div class="customer-info">
+          <div class="customer-header">
+            <h4 class="customer-name">Global Tech Solutions</h4>
+            <span class="customer-badge success">active</span>
+          </div>
+          <p class="customer-contact">Lisa Anderson</p>
+          <div class="customer-details">
+            <div class="detail-row">
+              <i class="fas fa-envelope"></i>
+              <span>lisa@globaltech.com</span>
+            </div>
+            <div class="detail-row">
+              <i class="fas fa-phone"></i>
+              <span>+91 98765 43211</span>
+            </div>
+            <div class="detail-row">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Bangalore</span>
+            </div>
+            <div class="detail-row">
+              <i class="fas fa-rupee-sign"></i>
+              <span class="customer-value">₹38.5L</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <button class="fab mini-fab" id="createCustomerBtn">
+      <i class="fas fa-plus"></i>
+    </button>
+  </section>
+
+  <!-- CUSTOMER DETAIL SCREEN -->
+  <section class="screen hidden" id="customerDetailScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromCustomerDetail">←</span>
+      <div>
+        <h2>Customer Details</h2>
+        <p id="customerDetailName">Acme Corporation</p>
+      </div>
+    </header>
+
+    <main class="lead-detail-content">
+      <!-- Customer Header Card -->
+      <div class="detail-header-card success-gradient-card">
+        <div class="customer-avatar-large success-gradient" id="customerDetailAvatar">AC</div>
+        <div class="customer-detail-info">
+          <div class="customer-detail-header">
+            <h3 id="customerDetailNameFull">Acme Corporation</h3>
+            <span class="customer-badge success" id="customerDetailStatus">active</span>
+          </div>
+          <p class="customer-contact-detail" id="customerDetailContact">James Wilson</p>
+          <div class="customer-value-detail" id="customerDetailValue"></div>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="detail-section">
+        <h4>Contact Information</h4>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <p class="detail-label">Email</p>
+              <p class="detail-value" id="customerDetailEmail">james@acme.com</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <p class="detail-label">Phone</p>
+              <p class="detail-value" id="customerDetailPhone">+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <p class="detail-label">Location</p>
+              <p class="detail-value" id="customerDetailLocation">Mumbai, Maharashtra</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-calendar"></i>
+            <div>
+              <p class="detail-label">Customer Since</p>
+              <p class="detail-value" id="customerDetailSince">Jan 2022</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="detail-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="purchases">Purchase History</button>
+          <button class="tab-btn" data-tab="interactions">Interactions</button>
+        </div>
+        
+        <div class="tab-content active" id="purchasesTab">
+          <div class="purchase-list">
+            <div class="purchase-item">
+              <div class="purchase-icon">
+                <div class="icon-box primary">📈</div>
+              </div>
+              <div class="purchase-info">
+                <div class="purchase-header">
+                  <h4>Enterprise Software License</h4>
+                  <span class="purchase-badge">completed</span>
+                </div>
+                <div class="purchase-details">
+                  <span class="purchase-date">2024-02-15</span>
+                  <span class="purchase-value">₹12.5L</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="purchase-item">
+              <div class="purchase-icon">
+                <div class="icon-box success">📈</div>
+              </div>
+              <div class="purchase-info">
+                <div class="purchase-header">
+                  <h4>Cloud Infrastructure Setup</h4>
+                  <span class="purchase-badge">completed</span>
+                </div>
+                <div class="purchase-details">
+                  <span class="purchase-date">2024-01-10</span>
+                  <span class="purchase-value">₹8.3L</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="interactionsTab">
+          <div class="interaction-list">
+            <div class="interaction-item">
+              <div class="interaction-icon">
+                <div class="icon-box accent">💬</div>
+              </div>
+              <div class="interaction-info">
+                <div class="interaction-header">
+                  <h4>Quarterly Business Review</h4>
+                  <span class="interaction-type">Meeting</span>
+                </div>
+                <p class="interaction-notes">Discussed expansion plans and new features</p>
+                <span class="interaction-date">2024-03-10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- COMPLAINTS SCREEN -->
+  <section class="screen hidden" id="complaintsScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromComplaints">←</span>
+      <div>
+        <h2>Customer Complaints</h2>
+        <p>3 pending resolution</p>
+      </div>
+    </header>
+
+    <div class="filter-section">
+      <div class="search-box">
+        🔍 <input type="text" placeholder="Search complaints..." class="search-input" id="complaintsSearch">
+      </div>
+      <button class="filter-btn" id="complaintsFilterBtn">Filter</button>
+    </div>
+
+    <div class="filter-panel hidden" id="complaintsFilterPanel">
+      <div class="filter-group">
+        <h5>Priority</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="priority" data-value="all">All</button>
+          <button class="filter-option" data-filter="priority" data-value="high">High</button>
+          <button class="filter-option" data-filter="priority" data-value="medium">Medium</button>
+          <button class="filter-option" data-filter="priority" data-value="low">Low</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <h5>Status</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="status" data-value="all">All</button>
+          <button class="filter-option" data-filter="status" data-value="pending">Pending</button>
+          <button class="filter-option" data-filter="status" data-value="investigating">Investigating</button>
+          <button class="filter-option" data-filter="status" data-value="resolved">Resolved</button>
+        </div>
+      </div>
+      <button class="clear-filters">Clear All</button>
+    </div>
+
+    <main class="leads-list">
+      <div class="complaint-card" data-priority="high" data-status="investigating" data-complaint-id="1">
+        <div class="complaint-icon">
+          <div class="icon-box warning">⚠</div>
+        </div>
+        <div class="complaint-info">
+          <div class="complaint-header">
+            <h4 class="complaint-title">Software Login Issues</h4>
+            <div class="complaint-badges">
+              <span class="complaint-priority-badge high">high</span>
+              <span class="complaint-status-badge investigating">investigating</span>
+            </div>
+          </div>
+          <p class="complaint-customer">Acme Corporation</p>
+          <p class="complaint-description">Multiple users unable to access the system</p>
+          <div class="complaint-details">
+            <span class="complaint-date">⏰ 2024-03-15</span>
+            <span class="complaint-assigned">👤 Tech Support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="complaint-card" data-priority="medium" data-status="pending" data-complaint-id="2">
+        <div class="complaint-icon">
+          <div class="icon-box default">⚠</div>
+        </div>
+        <div class="complaint-info">
+          <div class="complaint-header">
+            <h4 class="complaint-title">Invoice Discrepancy</h4>
+            <div class="complaint-badges">
+              <span class="complaint-priority-badge medium">medium</span>
+              <span class="complaint-status-badge pending">pending</span>
+            </div>
+          </div>
+          <p class="complaint-customer">Global Tech Solutions</p>
+          <p class="complaint-description">Billing amount doesn't match agreement</p>
+          <div class="complaint-details">
+            <span class="complaint-date">⏰ 2024-03-14</span>
+            <span class="complaint-assigned">👤 Finance Team</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <button class="fab mini-fab" id="createComplaintBtn">
+      <i class="fas fa-plus"></i>
+    </button>
+  </section>
+
+  <!-- COMPLAINT DETAIL SCREEN -->
+  <section class="screen hidden" id="complaintDetailScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromComplaintDetail">←</span>
+      <div>
+        <h2>Complaint Details</h2>
+        <p id="complaintDetailCustomer">Acme Corporation</p>
+      </div>
+      <button class="edit-btn" id="editComplaintBtn">
+        <i class="fas fa-edit"></i>
+      </button>
+    </header>
+
+    <main class="lead-detail-content">
+      <!-- Complaint Header Card -->
+      <div class="detail-header-card warning-card">
+        <div class="complaint-icon-large">
+          <div class="icon-box warning">⚠</div>
+        </div>
+        <div class="complaint-detail-info">
+          <div class="complaint-detail-header">
+            <h3 id="complaintDetailTitle">Software Login Issues</h3>
+            <span class="complaint-type" id="complaintDetailType">Technical Issue</span>
+          </div>
+          <div class="complaint-badges">
+            <span class="complaint-priority-badge high" id="complaintDetailPriority">high</span>
+            <span class="complaint-status-badge investigating" id="complaintDetailStatus">investigating</span>
+          </div>
+          <p class="complaint-description-detail" id="complaintDetailDescription">
+            Multiple users at Acme Corporation are unable to access the system. Getting "Invalid credentials" error.
+          </p>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="detail-section">
+        <h4>Contact Information</h4>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <i class="fas fa-user"></i>
+            <div>
+              <p class="detail-label">Contact Person</p>
+              <p class="detail-value" id="complaintDetailContactPerson">John Manager</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <p class="detail-label">Email</p>
+              <p class="detail-value" id="complaintDetailContactEmail">john@acme.com</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <p class="detail-label">Phone</p>
+              <p class="detail-value" id="complaintDetailContactPhone">+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-calendar"></i>
+            <div>
+              <p class="detail-label">Created</p>
+              <p class="detail-value" id="complaintDetailCreatedAt">2024-03-15</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Update -->
+      <div class="detail-section">
+        <h4>Update Status</h4>
+        <div class="status-buttons">
+          <button class="status-btn active">Pending</button>
+          <button class="status-btn">Investigating</button>
+          <button class="status-btn">Resolved</button>
+          <button class="status-btn">Closed</button>
+        </div>
+      </div>
+
+      <!-- Resolution Notes -->
+      <div class="detail-section">
+        <h4>Resolution Notes</h4>
+        <textarea placeholder="Add resolution details..." rows="3" class="resolution-textarea"></textarea>
+        <button class="save-btn small">Save Resolution</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="detail-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="chat">Chat</button>
+          <button class="tab-btn" data-tab="activity">Activity</button>
+          <button class="tab-btn" data-tab="documents">Documents</button>
+        </div>
+        
+        <div class="tab-content active" id="chatTabComplaint">
+          <div class="chat-history">
+            <div class="chat-message ai">
+              <div class="message-avatar">TS</div>
+              <div class="message-content">
+                <p>We've identified the issue. It seems to be related to their SSO configuration.</p>
+                <span class="message-time">2 hours ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-container">
+            <input type="text" placeholder="Type a message..." class="chat-input-detail">
+            <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="activityTabComplaint">
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon"><i class="fas fa-plus"></i></div>
+              <div class="activity-content">
+                <p>Complaint registered</p>
+                <span class="activity-time">Mar 15, 10:00 AM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="documentsTabComplaint">
+          <div class="documents-list">
+            <div class="document-item">
+              <i class="fas fa-file-pdf"></i>
+              <div>
+                <p>Error_Screenshot.png</p>
+                <span>1.2 MB • Mar 15, 2024</span>
+              </div>
+              <button class="view-doc-btn">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- VISITS SCREEN -->
+  <section class="screen hidden" id="visitsScreen">
+    <header class="sub-header">
+      <span class="back" id="backFromVisits">←</span>
+      <div>
+        <h2>Customer Visits</h2>
+        <p>5 scheduled today</p>
+      </div>
+      <button class="edit-btn" id="scheduleVisitBtn">
+        <i class="fas fa-plus"></i>
+      </button>
+    </header>
+
+    <div class="filter-section">
+      <div class="search-box">
+        🔍 <input type="text" placeholder="Search visits..." class="search-input" id="visitsSearch">
+      </div>
+      <button class="filter-btn" id="visitsFilterBtn">Filter</button>
+    </div>
+
+    <div class="filter-panel hidden" id="visitsFilterPanel">
+      <div class="filter-group">
+        <h5>Status</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="status" data-value="all">All</button>
+          <button class="filter-option" data-filter="status" data-value="scheduled">Scheduled</button>
+          <button class="filter-option" data-filter="status" data-value="in-progress">In Progress</button>
+          <button class="filter-option" data-filter="status" data-value="completed">Completed</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <h5>Priority</h5>
+        <div class="filter-options">
+          <button class="filter-option active" data-filter="priority" data-value="all">All</button>
+          <button class="filter-option" data-filter="priority" data-value="high">High</button>
+          <button class="filter-option" data-filter="priority" data-value="medium">Medium</button>
+          <button class="filter-option" data-filter="priority" data-value="low">Low</button>
+        </div>
+      </div>
+      <button class="clear-filters" id="clearVisitsFilters">Clear All</button>
+    </div>
+
+    <main class="leads-list">
+      <div class="visit-card" data-status="scheduled" data-priority="high" data-visit-id="1">
+        <div class="visit-icon">
+          <div class="icon-box purple">📍</div>
+        </div>
+        <div class="visit-info">
+          <div class="visit-header">
+            <h4 class="visit-title">Quarterly Business Review</h4>
+            <div class="visit-badges">
+              <span class="visit-priority-badge high">High</span>
+              <span class="visit-status-badge scheduled">Scheduled</span>
+            </div>
+          </div>
+          <p class="visit-customer">Acme Corporation</p>
+          <p class="visit-description">Discuss Q1 performance and Q2 roadmap</p>
+          <div class="visit-details">
+            <span class="visit-time">⏰ 10:00 AM - 11:30 AM</span>
+            <span class="visit-date">📅 Today, Mar 18</span>
+          </div>
+          <div class="visit-location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>123 Business St, Mumbai</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="visit-card" data-status="scheduled" data-priority="medium" data-visit-id="2">
+        <div class="visit-icon">
+          <div class="icon-box blue">📍</div>
+        </div>
+        <div class="visit-info">
+          <div class="visit-header">
+            <h4 class="visit-title">Product Demo</h4>
+            <div class="visit-badges">
+              <span class="visit-priority-badge medium">Medium</span>
+              <span class="visit-status-badge scheduled">Scheduled</span>
+            </div>
+          </div>
+          <p class="visit-customer">Tech Solutions Ltd</p>
+          <p class="visit-description">Demo of new enterprise features</p>
+          <div class="visit-details">
+            <span class="visit-time">⏰ 2:00 PM - 3:00 PM</span>
+            <span class="visit-date">📅 Today, Mar 18</span>
+          </div>
+          <div class="visit-location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>456 Tech Park, Bangalore</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="visit-card" data-status="in-progress" data-priority="high" data-visit-id="3">
+        <div class="visit-icon">
+          <div class="icon-box orange">📍</div>
+        </div>
+        <div class="visit-info">
+          <div class="visit-header">
+            <h4 class="visit-title">Contract Renewal Meeting</h4>
+            <div class="visit-badges">
+              <span class="visit-priority-badge high">High</span>
+              <span class="visit-status-badge in-progress">In Progress</span>
+            </div>
+          </div>
+          <p class="visit-customer">Global Enterprises</p>
+          <p class="visit-description">Annual contract renewal discussion</p>
+          <div class="visit-details">
+            <span class="visit-time">⏰ 11:00 AM - 12:30 PM</span>
+            <span class="visit-date">📅 Today, Mar 18</span>
+          </div>
+          <div class="visit-location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>789 Corporate Ave, Delhi</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <button class="fab mini-fab" id="scheduleVisitFab">
+      <i class="fas fa-plus"></i>
+    </button>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <nav>
+    <div class="nav-item active" id="navHome">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </div>
+    <div class="nav-item" id="navPlanner">
+      <i class="fas fa-calendar-alt"></i>
+      <span>Planner</span>
+    </div>
+    
+    <!-- Central FAB Nav Item -->
+    <div class="nav-fab-container">
+      <div class="nav-fab" id="navFab">
+        <i class="fas fa-plus"></i>
+      </div>
+      <span class="nav-fab-label">Create</span>
+    </div>
+    
+    <div class="nav-item" id="navIdeas">
+      <i class="fas fa-lightbulb"></i>
+      <span>Ideas</span>
+    </div>
+    <div class="nav-item" id="navSettings">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+    </div>
+  </nav>
+
+  <!-- CREATE MENU MODAL -->
+  <div class="create-menu hidden" id="createMenu">
+    <div class="create-menu-header">
+      <h4>Create New</h4>
+      <button class="close-create-menu" id="closeCreateMenu">×</button>
+    </div>
+    <div class="create-menu-items">
+      <div class="create-menu-item" data-action="lead">
+        <div class="create-menu-icon">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        <div class="create-menu-content">
+          <h5>New Lead</h5>
+          <p>Add a new sales lead</p>
+        </div>
+      </div>
+      <div class="create-menu-item" data-action="opportunity">
+        <div class="create-menu-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="create-menu-content">
+          <h5>New Opportunity</h5>
+          <p>Create sales opportunity</p>
+        </div>
+      </div>
+      <div class="create-menu-item" data-action="task">
+        <div class="create-menu-icon">
+          <i class="fas fa-tasks"></i>
+        </div>
+        <div class="create-menu-content">
+          <h5>New Task</h5>
+          <p>Add a new task</p>
+        </div>
+      </div>
+      <div class="create-menu-item" data-action="customer">
+        <div class="create-menu-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="create-menu-content">
+          <h5>New Customer</h5>
+          <p>Add new customer</p>
+        </div>
+      </div>
+      <div class="create-menu-item" data-action="visit">
+        <div class="create-menu-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="create-menu-content">
+          <h5>Customer Visit</h5>
+          <p>Plan customer visit</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <div class="fab" id="fabBtn">💬</div>
+
+  <!-- CHAT MODAL -->
+  <div class="chat-modal hidden" id="chatModal">
+    <div class="chat-header">
+      <h4>AI Sales Assistant</h4>
+      <button class="close-chat" id="closeChatBtn">×</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-message ai">
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+          <p>Hi! I'm your SalesBuddy assistant. How can I help you today?</p>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message..." id="chatInput">
+      <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- EVENT FORM MODAL -->
+  <div class="modal hidden" id="eventFormModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Schedule New Event</h3>
+        <button class="close-modal" id="closeEventForm">×</button>
+      </div>
+      <form id="eventForm" class="modal-form">
+        <div class="form-group">
+          <label>Event Title *</label>
+          <input type="text" id="eventTitle" placeholder="Meeting with client" required>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Event Type</label>
+            <select id="eventType">
+              <option value="meeting">Meeting</option>
+              <option value="call">Phone Call</option>
+              <option value="video">Video Call</option>
+              <option value="task">Task</option>
+              <option value="visit">Customer Visit</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Priority</label>
+            <select id="eventPriority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date *</label>
+            <input type="date" id="eventDate" required>
+          </div>
+          <div class="form-group">
+            <label>Time *</label>
+            <input type="time" id="eventTime" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Duration (minutes)</label>
+            <input type="number" id="eventDuration" min="15" max="480" value="60">
+          </div>
+          <div class="form-group">
+            <label>Reminder</label>
+            <select id="eventReminder">
+              <option value="none">None</option>
+              <option value="5">5 minutes before</option>
+              <option value="15">15 minutes before</option>
+              <option value="30">30 minutes before</option>
+              <option value="60">1 hour before</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="eventDescription" placeholder="Add event details..." rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>Related To (Optional)</label>
+          <select id="eventRelated">
+            <option value="">None</option>
+            <option value="lead-1">John Smith - Tech Innovations</option>
+            <option value="lead-2">Sarah Johnson - Digital Solutions</option>
+            <option value="customer-1">Acme Corporation</option>
+            <option value="customer-2">Global Tech Solutions</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="eventLocation" placeholder="Office, Conference Room, etc.">
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelEventForm">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
