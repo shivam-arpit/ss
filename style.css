@@ -4999,3 +4999,78 @@ textarea:focus,
 .lead-detail-actions .action-btn:hover {
   background: #f3f4f6;
 }
+/* Auto-generated field styling */
+.auto-generated-field {
+  position: relative;
+}
+
+.auto-generated-field input {
+  background-color: #f8f9fa;
+  border: 2px solid #e9ecef;
+  color: #495057;
+}
+
+.auto-gen-text {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: 500;
+  background: #e9ecef;
+  padding: 2px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+/* End Visit button styling */
+.end-visit-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px dashed #dee2e6;
+}
+
+.end-visit-btn {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.end-visit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.end-visit-btn:active {
+  transform: translateY(0);
+}
+
+.end-visit-btn i {
+  font-size: 18px;
+}
+
+.end-visit-hint {
+  font-size: 12px;
+  color: #6c757d;
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #dee2e6, transparent);
+  margin-bottom: 20px;
+}
