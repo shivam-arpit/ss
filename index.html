@@ -1713,7 +1713,7 @@
     </main>
   </section>
 
-  <!-- VISIT FORM SCREEN -->
+  <!-- VISIT FORM SCREEN - UPDATED -->
   <section class="screen hidden" id="visitFormScreen">
     <header class="sub-header">
       <span class="back" id="backFromVisitForm">←</span>
@@ -1737,19 +1737,22 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label>Visit Date <span class="req">*</span></label>
-            <input type="date" id="sbVisitDate" required>
-          </div>
+          
 
           <div class="form-group">
             <label>Start Time <span class="req">*</span></label>
-            <input type="time" id="sbVisitStartTime" required>
+            <div class="auto-generated-field">
+              <input type="time" id="sbVisitStartTime" required>
+              <span class="auto-gen-text">Auto-generated</span>
+            </div>
           </div>
 
           <div class="form-group">
             <label>End Time <span class="req">*</span></label>
-            <input type="time" id="sbVisitEndTime" required>
+            <div class="auto-generated-field">
+              <input type="time" id="sbVisitEndTime" required>
+              <span class="auto-gen-text">Auto-generated</span>
+            </div>
           </div>
 
           <!-- Column 2 -->
@@ -1884,7 +1887,7 @@
     </main>
   </section>
 
-  <!-- VISIT DETAIL SCREEN -->
+  <!-- VISIT DETAIL SCREEN - UPDATED -->
   <section class="screen hidden" id="visitDetailScreen">
     <header class="sub-header">
       <span class="back" id="backFromVisitDetail">←</span>
@@ -1892,9 +1895,10 @@
         <h2>Visit Details</h2>
         <p id="visitDetailCustomer">Customer Name</p>
       </div>
-      <button class="edit-btn" id="editVisitBtn">
-        <i class="fas fa-edit"></i>
-      </button>
+      <button class="edit-btn end-btn" id="endVisitBtn">
+  <i class="fas fa-stop"></i>
+  <span class="btn-text">End Visit</span>
+</button>
     </header>
 
     <main class="visit-detail-content">
@@ -2051,16 +2055,9 @@
         </div>
       </div>
 
-      <!-- Status Update -->
-      <div class="detail-section">
-        <h4>Update Status</h4>
-        <div class="status-buttons">
-          <button class="status-btn" data-status="scheduled">Scheduled</button>
-          <button class="status-btn" data-status="in-progress">In Progress</button>
-          <button class="status-btn" data-status="completed">Completed</button>
-          <button class="status-btn" data-status="cancelled">Cancelled</button>
-        </div>
-      </div>
+      <!-- Status Update with End Visit Button -->
+      <!-- Status Update with End Visit Button -->
+
 
       <!-- Tabs -->
       <div class="detail-tabs">
