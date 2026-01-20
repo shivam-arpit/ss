@@ -1881,7 +1881,7 @@
         <!-- Form Actions -->
         <div class="form-actions">
           <button type="button" class="btn btn-secondary" id="cancelVisitBtn">Cancel</button>
-          <button type="submit" class="btn btn-primary">Start Visit</button>
+          <button type="submit" class="btn btn-primary">Schedule Visit</button>
         </div>
       </form>
     </main>
@@ -2630,12 +2630,12 @@
 
       <!-- Approval Schema Progress -->
       <div class="detail-section">
-        <h4>Approval Progress</h4>
+        <h4>Proposal Progress</h4>
         <div class="approval-progress">
           <div class="approval-step completed">
             <div class="step-number">1</div>
             <div class="step-info">
-              <p class="step-title">Draft Created</p>
+              <p class="step-title">draft</p>
               <p class="step-status">Completed</p>
             </div>
             <div class="step-line"></div>
@@ -2643,7 +2643,7 @@
           <div class="approval-step completed">
             <div class="step-number">2</div>
             <div class="step-info">
-              <p class="step-title">Team Review</p>
+              <p class="step-title">Sent for approval</p>
               <p class="step-status">Completed</p>
             </div>
             <div class="step-line"></div>
@@ -2651,7 +2651,7 @@
           <div class="approval-step active">
             <div class="step-number">3</div>
             <div class="step-info">
-              <p class="step-title">Management Approval</p>
+              <p class="step-title">Proposal sent</p>
               <p class="step-status">In Progress</p>
             </div>
             <div class="step-line"></div>
@@ -2659,7 +2659,7 @@
           <div class="approval-step">
             <div class="step-number">4</div>
             <div class="step-info">
-              <p class="step-title">Client Submission</p>
+              <p class="step-title">approved</p>
               <p class="step-status">Pending</p>
             </div>
           </div>
@@ -2796,9 +2796,9 @@
       <div class="detail-section">
         <div class="section-header">
           <h4>Proposal Versions</h4>
-          <button class="add-task-btn" id="addNewVersionBtn">
+          <!--<button class="add-task-btn" id="addNewVersionBtn">
             <i class="fas fa-plus"></i> New Version
-          </button>
+          </button>-->
         </div>
         <div class="versions-list">
           <div class="version-item">
@@ -2812,7 +2812,7 @@
             <div class="version-actions">
               <button class="icon-btn"><i class="fas fa-download"></i></button>
               <button class="icon-btn"><i class="fas fa-eye"></i></button>
-              <button class="icon-btn"><i class="fas fa-share"></i></button>
+             <!-- <button class="icon-btn"><i class="fas fa-share"></i></button>-->
             </div>
           </div>
           <div class="version-item">
@@ -2846,8 +2846,7 @@
 
       <!-- Quick Actions -->
       <div class="action-buttons">
-        <button class="action-btn primary">
-          <i class="fas fa-download"></i> Download PDF
+       
         </button>
         <button class="action-btn secondary">
           <i class="fas fa-share"></i> Share with Client
@@ -2855,6 +2854,7 @@
         <button class="action-btn success">
           <i class="fas fa-check"></i> Mark as Approved
         </button>
+        
       </div>
 
       <!-- Tabs -->
@@ -2863,7 +2863,7 @@
           <button class="tab-btn active" data-tab="chat">Chat</button>
           <button class="tab-btn" data-tab="activity">Activity</button>
           <button class="tab-btn" data-tab="documents">Documents</button>
-          <button class="tab-btn" data-tab="approval">Approval History</button>
+         <!-- <button class="tab-btn" data-tab="approval">Approval History</button> -->
         </div>
         
         <div class="tab-content active" id="chatTabProposal">
@@ -3767,4 +3767,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
